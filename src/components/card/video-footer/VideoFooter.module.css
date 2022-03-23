@@ -1,0 +1,54 @@
+.footer {
+  padding: 1rem 0;
+  display: flex;
+  position: relative;
+}
+
+.footer img {
+  margin-right: 1rem;
+}
+
+.title {
+  font-size: var(--body-2);
+  font-weight: 700;
+}
+
+.creator,
+.info {
+  color: var(--sub-text-color);
+  font-weight: 600;
+  font-size: var(--body-3);
+}
+
+.info {
+  font-size: var(--body-4);
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+}
+
+.options {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  visibility: hidden;
+  background-color: var(--background-color);
+  width: 10rem;
+  border-radius: 3px;
+  font-size: var(--body-4);
+}
+
+.menu:hover > .options {
+  visibility: visible;
+}
+
+.options li {
+  list-style: none;
+  padding: 5px;
+  width: 100%;
+}
+.options li:hover {
+  background-color: var(--secondary-color);
+}
