@@ -1,0 +1,27 @@
+.header-dark {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  box-shadow: none;
+}
+
+.header-dark nav {
+  width: 98%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-dark > nav > div > svg {
+  min-width: 3rem;
+  margin-right: 1rem;
+}
+
+.header-dark button {
+  background: none;
+  font-size: large;
+}

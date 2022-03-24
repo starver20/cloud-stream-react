@@ -1,51 +1,115 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #545454;
+  --grey-light-color: #e5e5e5;
+  --active-color: #e4bc24;
+  --warning-color: #f4c900;
+
+  --error-color: #fe0000;
+
+  --background-color: #202020;
+  --dark-background-color: #181818;
+  --sub-text-color: rgb(117, 117, 117);
+
+  --header-1: 4rem;
+  --header-2: 3rem;
+  --header-3: 2rem;
+
+  --body-1: 1.8rem;
+  --body-2: 1.6rem;
+  --body-3: 1.4rem;
+  --body-4: 1.2rem;
+  --body-5: 1rem;
+  --body-6: 8px;
+  --body-7: 6px;
+
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 1.6rem;
+  --spacing-20: 2rem;
+  --spacing-24: 2.4rem;
+  --spacing-28: 2.8rem;
+  --spacing-32: 3.2rem;
+  --spacing-36: 3.6rem;
+  --spacing-40: 4rem;
+
+  --radius-1: 1.6rem;
+  --radius-2: 8px;
+  --radius-3: 2px;
+  --radius-full: 100%;
+
+  font-size: 62.5%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Mulish', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/*
+@media (max-width: 1024px) {
+  :root {
+    font-size: 50%;
   }
 }
+@media (max-width: 770px) {
+  :root {
+    font-size: 40%;
+  }
+  .brand svg {
+    width: 50rem;
+  }
+}
+@media (max-width: 660px) {
+  :root {
+    font-size: 30%;
+  }
+  .brand svg {
+    width: 50rem;
+  }
+} */
 
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
+.main-content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  min-height: calc(100vh - 6rem);
+}
+
+.sidebar {
+  transition: width 0.5s;
+  width: 260px;
+  height: calc(100vh - 6rem);
+  position: sticky;
+  top: 6rem;
+  overflow-y: auto;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+/* .sidebar:hover,
+.sidebar:focus {
+  overflow-y: scroll;
+} */
+
+.main-content main {
+  padding: 2rem;
+  flex: 1 0;
+  height: calc(100vh - 6rem);
+  overflow-y: auto;
+  background-color: var(--dark-background-color);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+@media (max-width: 1200px) {
+  .sidebar {
+    display: none;
+  }
 }
 
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
-}
-
-.brand-title span {
-  color: #ffde59;
-}
-
-.brand-description {
-  font-size: 1.4rem;
-}
-
-.links {
-  display: flex;
-}
-
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+iframe {
+  pointer-events: none;
 }
