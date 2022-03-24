@@ -20,3 +20,8 @@
 .active {
   background-color: var(--secondary-color);
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

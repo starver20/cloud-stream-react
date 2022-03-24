@@ -1,0 +1,23 @@
+.carousel-img {
+  width: 100%;
+}
+
+.carousel-container {
+  width: 100%;
+  position: relative;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 2rem;
+  height: 3rem;
+  border: none;
+  cursor: pointer;
+}
+
+.next {
+  right: 0rem;
+}

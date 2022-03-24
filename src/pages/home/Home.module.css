@@ -1,12 +1,6 @@
-.video-display {
-  display: grid;
-  gap: 4rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 25rem));
-  place-content: center;
-}
-
-@media (max-width: 600px) {
-  .video-display {
-    grid-template-columns: repeat(auto-fit, 100%);
-  }
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
