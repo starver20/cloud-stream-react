@@ -3,15 +3,29 @@ import { VideoFooter } from '../video-footer/VideoFooter';
 import classes from './VideoCard.module.css';
 
 const VideoCard = ({
-  url = 'https://i.ytimg.com/vi/PDVZFteJ9Jw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBhTdD0AVVod0kiYMz7B6JRV3cdew',
+  video: {
+    videoThumbnail,
+    title,
+    uploadDate,
+    views,
+    channelName,
+    channelImage,
+  },
 }) => {
+  console.log(videoThumbnail);
   return (
     <div className={classes['video-card']}>
       <div className={classes['image-container']}>
-        <img className={classes['image']} src={url} alt="" />
+        <img className={classes['image']} src={videoThumbnail} alt="" />
       </div>
       <div className={classes['video-footer']}>
-        <VideoFooter />
+        <VideoFooter
+          title={title}
+          uploadDate={uploadDate}
+          views={views}
+          channelName={channelName}
+          channelImage={channelImage}
+        />
       </div>
     </div>
   );
