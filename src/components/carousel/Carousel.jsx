@@ -26,7 +26,6 @@ const Carousel = () => {
   // Carousel has to stop once the user clicks on one of the arrow buttons
   useEffect(() => {
     let intervalId = setInterval(() => {
-      console.log(intervalId);
       moveToNextImage();
     }, 2000);
 
