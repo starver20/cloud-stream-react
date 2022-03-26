@@ -15,10 +15,20 @@
   margin-top: 4rem;
   display: grid;
   place-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 40%));
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 35%));
   gap: 2rem;
 }
 
 .image-container {
   position: relative;
+}
+@media (max-width: 1080px) {
+  .category {
+    grid-template-columns: repeat(auto-fit, 60%);
+  }
+}
+@media (max-width: 600px) {
+  .category {
+    grid-template-columns: repeat(auto-fit, 100%);
+  }
 }

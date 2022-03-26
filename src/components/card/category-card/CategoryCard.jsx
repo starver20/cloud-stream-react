@@ -7,7 +7,10 @@ const CategoryCard = ({ categoryThumbnail, category, description }) => {
       <div className={classes['image-container']}>
         <img className={classes['image']} src={categoryThumbnail} alt="" />
         <div className={classes['desc-layer']}>
-          <div className={classes.desc}>{description}</div>
+          <div className={classes.desc}>
+            <p className={classes['category-name']}>{category}</p>
+            <p className={classes['category-desc']}>{description}</p>
+          </div>
         </div>
       </div>
     </div>

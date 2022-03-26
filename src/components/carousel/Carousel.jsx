@@ -58,10 +58,8 @@ const Carousel = () => {
       <button className={classes.prev} onClick={backClickHandler}>
         {`<`}
       </button>
-      {img.map((img, index) => {
-        if (current === index)
-          return <img className={classes['carousel-img']} src={img.link} />;
-      })}
+      <img className={classes['carousel-img']} src={img[current].link} />
+
       <button className={classes.next} onClick={nextClickHandler}>
         {`>`}
       </button>
