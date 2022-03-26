@@ -1,0 +1,82 @@
+.video-info {
+  border-bottom: 1px solid var(--secondary-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+.meta-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.stats {
+  display: flex;
+}
+
+.actions {
+  display: flex;
+}
+
+.actions > *,
+.stats > * {
+  margin-right: 2rem;
+  font-size: var(--body-3);
+  display: flex;
+  align-items: center;
+}
+
+.stats > * {
+  margin-right: 1rem;
+}
+
+.actions > * {
+  cursor: pointer;
+}
+
+.title {
+  font-size: var(--header-3);
+  margin: 2rem 0 1rem;
+}
+
+.actions > p > * {
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 860px) {
+  .stats {
+    display: none;
+  }
+
+  .actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .actions > * {
+    margin: 0;
+  }
+}
+
+@media (max-width: 570px) {
+  .actions > * {
+    font-size: 0;
+  }
+}
+
+.channel-info {
+  display: flex;
+}
+.channel-info img {
+  margin-right: 1rem;
+}
+
+.channel-name {
+  font-size: var(--body-1);
+  margin-bottom: 2rem;
+}
+
+.channel-desc {
+  font-size: var(--body-3);
+}

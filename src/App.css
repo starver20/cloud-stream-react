@@ -95,7 +95,6 @@
 } */
 
 .main-content main {
-  padding: 2rem;
   flex: 1 0;
   height: calc(100vh - 6rem);
   overflow-y: auto;
@@ -107,8 +106,4 @@
   .sidebar {
     display: none;
   }
-}
-
-iframe {
-  pointer-events: none;
 }

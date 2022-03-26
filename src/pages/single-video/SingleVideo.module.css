@@ -1,0 +1,29 @@
+.single-video {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.video-player {
+  padding: 2rem;
+  flex: 1 0;
+  height: calc(100vh - 6rem);
+  overflow-y: auto;
+}
+
+.video-player::-webkit-scrollbar {
+  display: none;
+}
+.right-sidebar {
+  padding: 1rem;
+  position: sticky;
+  width: 260px;
+  height: calc(100vh - 6rem);
+  overflow: auto;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+.right-sidebar::-webkit-scrollbar {
+  display: none;
+}
