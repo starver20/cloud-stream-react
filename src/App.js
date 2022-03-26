@@ -1,7 +1,9 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import Sidebar from './components/sidebar/Sidebar';
 import { Home } from './pages/home/Home';
+import { VideoListing } from './pages/video-listing/VideoListing';
 
 function App() {
   return (
@@ -12,7 +14,11 @@ function App() {
           <Sidebar />
         </aside>
         <main>
-          <Home />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/explore" element={<VideoListing />} />
+            <Route path="*" element={<VideoListing />} />
+          </Routes>
         </main>
       </div>
     </div>
