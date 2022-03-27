@@ -5,7 +5,9 @@ import { useAuth } from '../../context/auth/auth-context';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
+
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const navigate = useNavigate();
 
