@@ -35,7 +35,6 @@ const Login = () => {
         password: 'adarshBalika123',
       });
 
-      console.log(user.wishlist, user.cart);
       if (status === 200) {
         //  Initialize playlist, history and liked videos here
         navigate('/');

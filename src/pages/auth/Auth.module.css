@@ -74,7 +74,7 @@
   height: var(--spacing-40);
   margin: 2rem 0;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   color: white;
   border: none;
   font-size: var(--body-2);
@@ -83,7 +83,7 @@
 }
 
 .auth-btn:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--dark-background-color);
 }
 
 .card span,
