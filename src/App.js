@@ -4,6 +4,7 @@ import Navbar from './components/navbar/Navbar';
 import Sidebar from './components/sidebar/Sidebar';
 import { Home } from './pages/home/Home';
 import { VideoListing } from './pages/video-listing/VideoListing';
+import { SingleVideo } from './pages/single-video/SingleVideo';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/explore" element={<VideoListing />} />
+            <Route path="/video/:videoId" element={<SingleVideo />} />
             <Route path="*" element={<VideoListing />} />
           </Routes>
         </main>

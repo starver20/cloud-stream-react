@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import classes from './VideoListing.module.css';
 import { VideoCard } from '../../components/card/video-card/VideoCard';
-import axios from 'axios';
+import { useVideos } from '../../context/videos-context/VideoContext';
 
 const VideoListing = () => {
-  const [videos, setVideos] = useState([]);
-
-  useEffect(() => {
-    const getVids = async () => {
-      let response = await axios.get('/api/videos');
-      console.log(response.data.videos);
-      setVideos(response.data.videos);
-    };
-    getVids();
-  }, []);
+  const { videos } = useVideos();
 
   return (
     <div className={classes['video-display']}>
       {videos.map((video) => (
-        <VideoCard video={video} />
+        <VideoCard {...video} />
       ))}
     </div>
   );

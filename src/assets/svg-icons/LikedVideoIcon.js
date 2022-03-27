@@ -1,9 +1,9 @@
 import React from 'react';
 
-const LikedVideoIcon = ({ active }) => {
+const LikedVideoIcon = ({ active = false }) => {
   return (
     <svg
-      class="w-6 h-6"
+      className="w-6 h-6"
       fill={active ? 'white' : 'none'}
       stroke="currentColor"
       viewBox="0 0 20 20"

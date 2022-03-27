@@ -1,33 +1,32 @@
 import React from 'react';
 import { VideoFooter } from '../video-footer/VideoFooter';
 import classes from './VideoCard.module.css';
+import { Link } from 'react-router-dom';
 
 const VideoCard = ({
-  video: {
-    videoThumbnail,
-    title,
-    uploadDate,
-    views,
-    channelName,
-    channelImage,
-  },
+  videoThumbnail,
+  title,
+  uploadDate = 1648333768273,
+  views,
+  channelName,
+  channelImage,
+  youtubeId,
 }) => {
-  console.log(videoThumbnail);
   return (
-    <div className={classes['video-card']}>
+    <Link to={`/video/${youtubeId}`} className={classes['video-card']}>
       <div className={classes['image-container']}>
         <img className={classes['image']} src={videoThumbnail} alt="" />
       </div>
       <div className={classes['video-footer']}>
         <VideoFooter
           title={title}
-          uploadDate={uploadDate}
+          uploadDate={uploadDate - 2000000000}
           views={views}
           channelName={channelName}
           channelImage={channelImage}
         />
       </div>
-    </div>
+    </Link>
   );
 };
 
