@@ -1,5 +1,5 @@
 import React from 'react';
-import { useVideos } from '../../../context/videos-context/VideoContext';
+import { useVideos } from '../../../context/videos/videos-context';
 import { VideoCard } from '../../card/video-card/VideoCard';
 
 const RightSidebar = () => {
