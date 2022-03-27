@@ -2,18 +2,16 @@ import React from 'react';
 import classes from './VideoPlayer.module.css';
 import { VideoPlayerFooter } from './VideoPlayerFooter';
 
-const VideoPlayer = ({ video = {} }) => {
-  const {
-    youtubeId,
-    channelImage,
-    title,
-    views,
-    likes,
-    uploadDate = 1648333768273,
-    channelName,
-    description,
-  } = video;
-
+const VideoPlayer = ({
+  youtubeId,
+  channelImage,
+  title,
+  views,
+  likes,
+  uploadDate = 1648333768273,
+  channelName,
+  description,
+}) => {
   return (
     <>
       <div>

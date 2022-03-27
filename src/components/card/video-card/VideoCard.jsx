@@ -4,15 +4,13 @@ import classes from './VideoCard.module.css';
 import { Link } from 'react-router-dom';
 
 const VideoCard = ({
-  video: {
-    videoThumbnail,
-    title,
-    uploadDate = 1648333768273,
-    views,
-    channelName,
-    channelImage,
-    youtubeId,
-  },
+  videoThumbnail,
+  title,
+  uploadDate = 1648333768273,
+  views,
+  channelName,
+  channelImage,
+  youtubeId,
 }) => {
   return (
     <Link to={`/video/${youtubeId}`} className={classes['video-card']}>

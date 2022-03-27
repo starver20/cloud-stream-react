@@ -16,7 +16,7 @@ const SingleVideo = () => {
   return (
     <div className={classes['single-video']}>
       <div className={classes['video-player']}>
-        <VideoPlayer video={video[0]} />
+        <VideoPlayer {...video[0]} />
       </div>
       <div className={classes['right-sidebar']}>
         <RightSidebar />
