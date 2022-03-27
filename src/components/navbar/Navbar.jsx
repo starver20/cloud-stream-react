@@ -1,7 +1,22 @@
 import React from 'react';
 import classes from './Navbar.module.css';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/auth/auth-context';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ isLoggedIn = false }) => {
+const Navbar = () => {
+  const { user, logout } = useAuth();
+
+  const navigate = useNavigate();
+
+  const authClickHandler = (e) => {
+    // If user is logged in, then log him out and clear the wishlist and cart
+    if (user) {
+      // Clear likes, history and playlist here
+      logout();
+    }
+    navigate('/login');
+  };
   return (
     <>
       <header className={`header ${classes['header-dark']}`}>
@@ -28,9 +43,9 @@ const Navbar = ({ isLoggedIn = false }) => {
           </div>
           <div className="nav-action-container">
             <div className="nav-action">
-              {isLoggedIn ? (
-                <div className="nav-icon">
-                  <a href="#">
+              {user ? (
+                <div className={`nav-icon ${classes['options-container']}`}>
+                  <Link to="/">
                     <svg
                       class="w-6 h-6"
                       fill="white"
@@ -43,10 +58,25 @@ const Navbar = ({ isLoggedIn = false }) => {
                         clip-rule="evenodd"
                       ></path>
                     </svg>
-                  </a>
+                    <p>{user.firstName}</p>
+                  </Link>
+                  <div className={classes['profile-options']}>
+                    <button
+                      onClick={authClickHandler}
+                      className="nav--action__login"
+                    >
+                      Logout
+                    </button>
+
+                    <Link to="/">
+                      <button className="nav--action__login">Profile</button>
+                    </Link>
+                  </div>
                 </div>
               ) : (
-                <button className="nav--action__login">LOGIN</button>
+                <Link to="/login">
+                  <button className="nav--action__login">LOGIN</button>
+                </Link>
               )}
             </div>
           </div>

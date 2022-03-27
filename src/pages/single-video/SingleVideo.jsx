@@ -3,7 +3,7 @@ import { VideoPlayer } from '../../components/video-player/VideoPlayer';
 import { RightSidebar } from '../../components/sidebar/right-sidebar/RightSidebar';
 import classes from './SingleVideo.module.css';
 import { useParams } from 'react-router-dom';
-import { useVideos } from '../../context/videos-context/VideoContext';
+import { useVideos } from '../../context/videos/videos-context';
 
 const SingleVideo = () => {
   const { videoId } = useParams();

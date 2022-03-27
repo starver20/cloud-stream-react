@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classes from './VideoListing.module.css';
 import { VideoCard } from '../../components/card/video-card/VideoCard';
-import { useVideos } from '../../context/videos-context/VideoContext';
+import { useVideos } from '../../context/videos/videos-context';
 
 const VideoListing = () => {
   const { videos } = useVideos();

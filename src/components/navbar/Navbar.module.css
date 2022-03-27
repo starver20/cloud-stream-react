@@ -25,3 +25,33 @@
   background: none;
   font-size: large;
 }
+
+.options-container {
+  position: relative;
+}
+
+.options-container > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--body-3);
+}
+
+.profile-options {
+  position: absolute;
+  padding: 0.5rem;
+  border-radius: var(--radius-3);
+  background-color: var(--sub-text-color);
+  right: 0;
+  display: none;
+}
+
+.options-container:hover > .profile-options {
+  display: initial;
+}
+
+.profile-options button {
+  text-align: left;
+  font-size: var(--body-3);
+  width: 100%;
+}
