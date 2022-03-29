@@ -36,7 +36,7 @@ const VideoFooter = ({ video }) => {
           </span>
         </p>
       </div>
-      <span className={classes.menu}>
+      <span onClick={(e) => e.stopPropagation()} className={classes.menu}>
         OPT
         <div className={classes.options}>
           <ul>
@@ -46,7 +46,9 @@ const VideoFooter = ({ video }) => {
                 !watchlaterLoading && watchlater();
               }}
             >
-              Watch Later
+              {addedToWatchlater
+                ? 'Remove from watch later'
+                : 'Add to watch later'}
             </li>
             <li>Add to Playlist</li>
           </ul>
