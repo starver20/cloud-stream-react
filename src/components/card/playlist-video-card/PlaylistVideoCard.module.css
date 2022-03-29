@@ -37,9 +37,13 @@
   align-self: center;
 }
 
+img {
+  width: 20rem;
+}
+
 @media (max-width: 800px) {
   img {
-    width: 100%;
+    width: 15rem;
   }
 
   .title {
