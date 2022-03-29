@@ -1,13 +1,12 @@
 import axios from 'axios';
 
-const jwt = localStorage.getItem('jwt');
-
 export const addToLikedVideo = async (
   video,
   check,
   videosDispatch,
   navigate
 ) => {
+  const jwt = localStorage.getItem('jwt');
   if (jwt) {
     let response;
     if (!check) {
@@ -57,6 +56,7 @@ export const addToWatchlater = async (
   videosDispatch,
   navigate
 ) => {
+  const jwt = localStorage.getItem('jwt');
   if (jwt) {
     let response;
     if (!check) {
