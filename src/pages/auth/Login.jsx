@@ -25,6 +25,10 @@ const Login = () => {
           type: 'UPDATE_LIKED_VIDEOS',
           payload: { likedVideos: user.likes },
         });
+        videosDispatch({
+          type: 'UPDATE_WATCH_LATER_VIDEOS',
+          payload: { watchlaterVideos: user.watchlater },
+        });
         navigate('/');
       } else {
         alert('Invalid email or password');
@@ -43,6 +47,14 @@ const Login = () => {
 
       if (status === 200) {
         //  Initialize playlist, history and liked videos here
+        videosDispatch({
+          type: 'UPDATE_LIKED_VIDEOS',
+          payload: { likedVideos: user.likes },
+        });
+        videosDispatch({
+          type: 'UPDATE_WATCH_LATER_VIDEOS',
+          payload: { watchlaterVideos: user.watchlater },
+        });
         navigate('/');
       } else {
         alert('Invalid email or password');

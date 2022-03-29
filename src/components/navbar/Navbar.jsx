@@ -3,9 +3,11 @@ import classes from './Navbar.module.css';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/auth/auth-context';
 import { useNavigate } from 'react-router-dom';
+import { useVideos } from '../../context/videos/videos-context';
 
 const Navbar = () => {
   const { logout } = useAuth();
+  const { videosDispatch } = useVideos();
 
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -15,6 +17,15 @@ const Navbar = () => {
     // If user is logged in, then log him out and clear the wishlist and cart
     if (user) {
       // Clear likes, history and playlist here
+
+      videosDispatch({
+        type: 'UPDATE_LIKED_VIDEOS',
+        payload: { likedVideos: [] },
+      });
+      videosDispatch({
+        type: 'UPDATE_WATCH_LATER_VIDEOS',
+        payload: { watchlaterVideos: [] },
+      });
       logout();
     }
     navigate('/login');

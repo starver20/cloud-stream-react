@@ -1,33 +1,33 @@
 import React from 'react';
-import classes from './LikedVideo.module.css';
+import classes from '../liked-video/LikedVideo.module.css';
 import { PlaylistVideoCard } from '../../components/card/playlist-video-card/PlaylistVideoCard';
 import { PlaylistInfoCard } from '../../components/card/playlist-info-card/PlaylistInfoCard';
 import { useVideos } from '../../context/videos/videos-context';
 
-export const LikedVideo = () => {
-  const { likedVideos } = useVideos();
+export const Watchlater = () => {
+  const { watchlaterVideos } = useVideos();
 
   return (
     <div className={classes['main-container']}>
-      {likedVideos.length > 0 ? (
+      {watchlaterVideos.length > 0 ? (
         <div className={classes['playlist-info']}>
           <PlaylistInfoCard
-            video={likedVideos[0]}
-            total={likedVideos.length}
-            playlistName="Liked Videos"
+            video={watchlaterVideos[0]}
+            total={watchlaterVideos.length}
+            playlistName="Watch Later"
           />
         </div>
       ) : null}
       <div className={classes['playlist-videos']}>
-        {likedVideos.length > 0 ? (
-          likedVideos.map((video) => {
-            return <PlaylistVideoCard video={video} type="liked" />;
+        {watchlaterVideos.length > 0 ? (
+          watchlaterVideos.map((video) => {
+            return <PlaylistVideoCard video={video} type="watchlater" />;
           })
         ) : (
           <div className={classes['empty-likes-array']}>
-            <p>No liked videos!</p>
+            <p>No videos here!</p>
             <p className={classes['sub-message']}>
-              Explore videos to find videos you like.
+              Explore videos to find videos to watch later.
             </p>
           </div>
         )}

@@ -6,7 +6,7 @@ import ShareIcon from '../../assets/svg-icons/ShareIcon';
 import PlaylistIcon from '../../assets/svg-icons/PlaylistIcon';
 import WatchLaterIcon from '../../assets/svg-icons/WatchlaterIcon';
 import { useManipulators } from '../../utils/useManipulators';
-import { addToLikedVideo } from './utils/video-utils';
+import { addToLikedVideo, addToWatchlater } from '../../utils/video-utils';
 import { useVideos } from '../../context/videos/videos-context';
 import { useAsync } from '../../hooks/useAsync';
 
@@ -22,9 +22,10 @@ const VideoPlayerFooter = ({ video }) => {
   } = video;
 
   const { videosDispatch } = useVideos();
-  const { isLiked } = useManipulators();
+  const { isLiked, isAddedToWatchlater } = useManipulators();
 
   const liked = isLiked(video._id);
+  const addedToWatchlater = isAddedToWatchlater(video._id);
 
   const { callAsyncFunction: likeVideo, loading: likeVideoLoading } = useAsync(
     addToLikedVideo,
@@ -32,6 +33,9 @@ const VideoPlayerFooter = ({ video }) => {
     videosDispatch,
     video
   );
+
+  const { callAsyncFunction: watchlater, loading: watchlaterLoading } =
+    useAsync(addToWatchlater, addedToWatchlater, videosDispatch, video);
 
   return (
     <>
@@ -55,8 +59,8 @@ const VideoPlayerFooter = ({ video }) => {
               <PlaylistIcon active={false} />
               SAVE
             </p>
-            <p>
-              <WatchLaterIcon active={false} />
+            <p onClick={watchlaterLoading ? null : watchlater}>
+              <WatchLaterIcon active={addedToWatchlater} />
               LATER
             </p>
           </div>

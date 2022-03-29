@@ -1,6 +1,7 @@
 .container {
   display: flex;
   margin-bottom: 1rem;
+  max-width: 70rem;
 }
 
 .channel-info {
@@ -14,10 +15,11 @@
 
 .video-info {
   display: flex;
-  flex-direction: column;
-  padding: 8px;
+  justify-content: space-between;
+  padding: 0 8px;
+  width: 100%;
 }
-.video-info > * {
+.video-info > div > * {
   margin-bottom: 1rem;
 }
 
@@ -29,4 +31,28 @@
 .channel {
   font-size: var(--body-4);
   font-weight: 100;
+}
+
+.delete-icon {
+  align-self: center;
+}
+
+img {
+  width: 20rem;
+}
+
+@media (max-width: 800px) {
+  img {
+    width: 15rem;
+  }
+
+  .title {
+    font-size: var(--body-4);
+    font-weight: 500;
+  }
+
+  .channel {
+    font-size: var(--body-5);
+    font-weight: 100;
+  }
 }
