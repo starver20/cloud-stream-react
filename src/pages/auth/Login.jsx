@@ -4,21 +4,27 @@ import classes from './Auth.module.css';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/auth/auth-context';
 import { useNavigate } from 'react-router-dom';
+import { useVideos } from '../../context/videos/videos-context';
 
 const Login = () => {
   const { login } = useAuth();
+  const { videosDispatch } = useVideos();
   const navigate = useNavigate();
 
   const loginClickHandler = async (e) => {
     e.preventDefault();
     try {
-      let { status } = await login({
+      let { status, user } = await login({
         email: e.target.email.value,
         password: e.target.password.value,
       });
 
       if (status === 200) {
         //  Initialize playlist, history and liked videos here
+        videosDispatch({
+          type: 'UPDATE_LIKED_VIDEOS',
+          payload: { likedVideos: user.likes },
+        });
         navigate('/');
       } else {
         alert('Invalid email or password');

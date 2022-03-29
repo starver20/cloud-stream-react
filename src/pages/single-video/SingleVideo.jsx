@@ -11,12 +11,10 @@ const SingleVideo = () => {
 
   let video = videos.filter((video) => video.youtubeId === videoId);
 
-  console.log(video);
-
   return (
     <div className={classes['single-video']}>
       <div className={classes['video-player']}>
-        <VideoPlayer {...video[0]} />
+        <VideoPlayer video={video[0]} />
       </div>
       <div className={classes['right-sidebar']}>
         <RightSidebar />

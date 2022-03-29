@@ -26,15 +26,17 @@ const useProvideAuth = () => {
     console.log(response);
     if (response.status === 200) {
       localStorage.setItem('jwt', response.data.encodedToken);
+      localStorage.setItem('user', JSON.stringify(response.data.foundUser));
       setUser(response.data.foundUser);
     }
-    return { status: response.status };
+    return { status: response.status, user: response.data.foundUser };
   };
 
   const signup = async (body) => {
     let response = await axios.post('/api/auth/signup', body);
     if (response.status === 201) {
       localStorage.setItem('jwt', response.data.encodedToken);
+      localStorage.setItem('user', JSON.stringify(response.data.foundUser));
       setUser(response.data.createdUser);
     }
     return { status: response.status };
@@ -42,6 +44,7 @@ const useProvideAuth = () => {
 
   const logout = () => {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('user');
     setUser(null);
     navigate('/');
   };

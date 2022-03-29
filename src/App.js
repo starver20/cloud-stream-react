@@ -7,6 +7,7 @@ import { VideoListing } from './pages/video-listing/VideoListing';
 import { SingleVideo } from './pages/single-video/SingleVideo';
 import { Login } from './pages/auth/Login';
 import { Signup } from './pages/auth/Signup';
+import { LikedVideo } from './pages/liked-video/LikedVideo';
 import Mockman from 'mockman-js';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/explore" element={<VideoListing />} />
             <Route path="/video/:videoId" element={<SingleVideo />} />
+            <Route path="/likes" element={<LikedVideo />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/m" element={<Mockman />} />

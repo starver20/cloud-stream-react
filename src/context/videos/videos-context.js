@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useEffect, useContext } from 'react';
 import axios from 'axios';
 
-const initialState = { videos: [], videosDispatch: () => {} };
+const initialState = { videos: [], likedVideos: [], videosDispatch: () => {} };
 
 const VideosContext = createContext(initialState);
 
@@ -9,6 +9,8 @@ const videosReducer = (state, action) => {
   switch (action.type) {
     case 'UPDATE_VIDEOS':
       return { ...state, videos: action.payload.videos };
+    case 'UPDATE_LIKED_VIDEOS':
+      return { ...state, likedVideos: action.payload.likedVideos };
 
     default:
       return state;

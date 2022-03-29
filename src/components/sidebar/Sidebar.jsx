@@ -10,7 +10,6 @@ import WatchlaterIcon from '../../assets/svg-icons/WatchlaterIcon';
 
 const Sidebar = () => {
   const [active, setActive] = useState('Home');
-  console.log(active);
 
   return (
     <>
@@ -30,8 +29,8 @@ const Sidebar = () => {
           />
           <SidebarItem
             Item={LikedVideoIcon}
-            type="Liked Videos"
-            active={active === 'Liked Videos'}
+            type="Likes"
+            active={active === 'Likes'}
             clickHandler={setActive}
           />
           <SidebarItem
@@ -43,14 +42,14 @@ const Sidebar = () => {
 
           <SidebarItem
             Item={PlaylistIcon}
-            type="Playist"
-            active={active === 'Playist'}
+            type="Playlist"
+            active={active === 'Playlist'}
             clickHandler={setActive}
           />
           <SidebarItem
             Item={WatchlaterIcon}
-            type="Watch Later"
-            active={active === 'Watch Later'}
+            type="Later"
+            active={active === 'Later'}
             clickHandler={setActive}
           />
         </div>

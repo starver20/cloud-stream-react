@@ -1,0 +1,11 @@
+.thumbnail {
+  width: 100%;
+}
+
+.playlist-name {
+  font-size: var(--header-2);
+}
+
+.total {
+  font-size: var(--body-2);
+}
