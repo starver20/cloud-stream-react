@@ -36,6 +36,7 @@ const VideoFooter = ({ video }) => {
           </span>
         </p>
       </div>
+      {/* This stopPropagation is to stop redirecting to video page when user clicks on the opt button in mobile view to see the options */}
       <span onClick={(e) => e.stopPropagation()} className={classes.menu}>
         OPT
         <div className={classes.options}>
