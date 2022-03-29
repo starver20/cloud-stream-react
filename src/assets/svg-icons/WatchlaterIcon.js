@@ -6,7 +6,7 @@ const WatchlaterIcon = ({ active }) => {
       class="w-6 h-6"
       fill={active ? 'white' : 'none'}
       stroke={active ? 'black' : 'currentColor'}
-      strokeWidth="0.5"
+      strokeWidth={active ? '0.5' : '1'}
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
     >
