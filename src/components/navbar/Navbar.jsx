@@ -24,7 +24,7 @@ const Navbar = () => {
       });
       videosDispatch({
         type: 'UPDATE_WATCH_LATER_VIDEOS',
-        payload: { watchlaterVideos: [user.watchlater] },
+        payload: { watchlaterVideos: [] },
       });
       logout();
     }
