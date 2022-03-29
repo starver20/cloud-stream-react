@@ -1,33 +1,29 @@
 import React from 'react';
 import { VideoFooter } from '../video-footer/VideoFooter';
 import classes from './VideoCard.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const VideoCard = ({
-  videoThumbnail,
-  title,
-  uploadDate = 1648333768273,
-  views,
-  channelName,
-  channelImage,
-  youtubeId,
-}) => {
+const VideoCard = ({ video }) => {
+  const { videoThumbnail, youtubeId } = video;
+  const navigate = useNavigate();
   return (
-    <Link to={`/video/${youtubeId}`} className={classes['video-card']}>
-      <div className={classes['image-container']}>
+    <div
+      onClick={() => {
+        navigate(`/video/${youtubeId}`);
+      }}
+      className={classes['video-card']}
+    >
+      <div to={`/video/${youtubeId}`} className={classes['image-container']}>
         <img className={classes['image']} src={videoThumbnail} alt="" />
       </div>
       <div className={classes['video-footer']}>
-        <VideoFooter
-          title={title}
-          uploadDate={uploadDate - 2000000000}
-          views={views}
-          channelName={channelName}
-          channelImage={channelImage}
-        />
+        <VideoFooter video={video} />
       </div>
-    </Link>
+    </div>
   );
 };
+
+// Used navigate here because using Link will redirect every time watch later is clicked,
+//  because its not an event, e.stopPropagation won't work on it
 
 export { VideoCard };

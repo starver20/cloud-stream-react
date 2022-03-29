@@ -1,7 +1,12 @@
 import React, { createContext, useReducer, useEffect, useContext } from 'react';
 import axios from 'axios';
 
-const initialState = { videos: [], likedVideos: [], videosDispatch: () => {} };
+const initialState = {
+  videos: [],
+  likedVideos: [],
+  watchlaterVideos: [],
+  videosDispatch: () => {},
+};
 
 const VideosContext = createContext(initialState);
 
@@ -11,7 +16,8 @@ const videosReducer = (state, action) => {
       return { ...state, videos: action.payload.videos };
     case 'UPDATE_LIKED_VIDEOS':
       return { ...state, likedVideos: action.payload.likedVideos };
-
+    case 'UPDATE_WATCH_LATER_VIDEOS':
+      return { ...state, watchlaterVideos: action.payload.watchlaterVideos };
     default:
       return state;
   }

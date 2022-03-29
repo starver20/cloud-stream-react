@@ -9,7 +9,7 @@ const VideoListing = () => {
   return (
     <div className={classes['video-display']}>
       {videos.map((video) => (
-        <VideoCard {...video} />
+        <VideoCard video={video} />
       ))}
     </div>
   );

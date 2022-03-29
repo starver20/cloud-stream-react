@@ -1,14 +1,28 @@
 import React from 'react';
 import classes from './VideoFooter.module.css';
 import { formatDistance } from 'date-fns';
+import { useManipulators } from '../../../utils/useManipulators';
+import { addToWatchlater } from '../../../utils/video-utils';
+import { useVideos } from '../../../context/videos/videos-context';
+import { useAsync } from '../../../hooks/useAsync';
 
-const VideoFooter = ({
-  title = 'Video Title',
-  channelName = 'Amar',
-  views = 2342342,
-  uploadDate = 1233123,
-  channelImage,
-}) => {
+const VideoFooter = ({ video }) => {
+  const {
+    title = 'Video Title',
+    channelName = 'Amar',
+    views = 2342342,
+    uploadDate = 1233123,
+    channelImage,
+  } = video;
+
+  const { videosDispatch } = useVideos();
+  const { isAddedToWatchlater } = useManipulators();
+
+  const addedToWatchlater = isAddedToWatchlater(video._id);
+
+  const { callAsyncFunction: watchlater, loading: watchlaterLoading } =
+    useAsync(addToWatchlater, addedToWatchlater, videosDispatch, video);
+
   return (
     <div className={classes.footer}>
       <img class="avatar avatar-sm" src={channelImage} alt="medium logo" />
@@ -18,7 +32,7 @@ const VideoFooter = ({
         <p className={classes.info}>
           <span className={classes.views}>{views} views - </span>
           <span className={classes.date}>
-            {formatDistance(uploadDate, Date.now())} ago
+            {formatDistance(uploadDate - 2000000, Date.now())} ago
           </span>
         </p>
       </div>
@@ -26,7 +40,14 @@ const VideoFooter = ({
         OPT
         <div className={classes.options}>
           <ul>
-            <li>Watch Later</li>
+            <li
+              onClick={(e) => {
+                e.stopPropagation();
+                !watchlaterLoading && watchlater();
+              }}
+            >
+              Watch Later
+            </li>
             <li>Add to Playlist</li>
           </ul>
         </div>

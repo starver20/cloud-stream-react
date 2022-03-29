@@ -8,7 +8,7 @@ const RightSidebar = () => {
   return (
     <div>
       {videos.slice(0, 6).map((video) => (
-        <VideoCard {...video} />
+        <VideoCard video={video} />
       ))}
     </div>
   );

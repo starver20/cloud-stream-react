@@ -24,3 +24,9 @@
 .sub-message {
   font-size: var(--header-2);
 }
+
+@media (max-width: 900px) {
+  .playlist-info {
+    display: none;
+  }
+}
