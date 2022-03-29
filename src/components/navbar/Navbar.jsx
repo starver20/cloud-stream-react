@@ -17,6 +17,7 @@ const Navbar = () => {
     // If user is logged in, then log him out and clear the wishlist and cart
     if (user) {
       // Clear likes, history and playlist here
+
       videosDispatch({
         type: 'UPDATE_LIKED_VIDEOS',
         payload: { likedVideos: [] },
