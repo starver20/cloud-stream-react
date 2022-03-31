@@ -9,6 +9,7 @@ import { Login } from './pages/auth/Login';
 import { Signup } from './pages/auth/Signup';
 import { LikedVideo } from './pages/liked-video/LikedVideo';
 import { Watchlater } from './pages/watch-later/Watchlater';
+import { Playlist } from './pages/playlist/Playlist';
 import Mockman from 'mockman-js';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <aside className="sidebar">
           <Sidebar />
         </aside>
+
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -28,6 +30,7 @@ function App() {
             <Route path="/later" element={<Watchlater />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/playlist" element={<Playlist />} />
             <Route path="/m" element={<Mockman />} />
             <Route path="*" element={<VideoListing />} />
           </Routes>
