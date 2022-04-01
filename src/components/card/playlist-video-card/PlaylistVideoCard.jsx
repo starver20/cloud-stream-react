@@ -2,25 +2,47 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from './PlaylistVideoCard.module.css';
 import DeleteIcon from '../../../assets/svg-icons/DeleteIcon';
-import { addToWatchlater, addToLikedVideo } from '../../../utils/video-utils';
+import {
+  addToWatchlater,
+  addToLikedVideo,
+  addToPlaylist,
+} from '../../../utils/video-utils';
 import { useAsync } from '../../../hooks/useAsync';
 import { useVideos } from '../../../context/videos/videos-context';
 
-export const PlaylistVideoCard = ({ video, type }) => {
+export const PlaylistVideoCard = ({ video, type, playlistId }) => {
   const { videoThumbnail, channelName, channelImage, title, youtubeId } = video;
 
   const { videosDispatch } = useVideos();
   const navigate = useNavigate();
 
+  // like/ unlike
   const { callAsyncFunction: likeVideo, loading: likeVideoLoading } = useAsync(
     addToLikedVideo,
-    true,
     videosDispatch,
-    video
+    video,
+    true
   );
 
+  // add/remove from watch later
   const { callAsyncFunction: watchlater, loading: watchlaterLoading } =
-    useAsync(addToWatchlater, true, videosDispatch, video);
+    useAsync(addToWatchlater, videosDispatch, video, true);
+
+  // add/remove from playlist
+  const {
+    callAsyncFunction: addToPlaylistHandler,
+    loading: addToPlaylistLoading,
+  } = useAsync(
+    addToPlaylist,
+    videosDispatch,
+    {
+      playlistId,
+      video,
+    },
+    true
+  );
+
+  // Here passing true, to tell that all these videos exist in the respective playlists
 
   return (
     <div
@@ -46,10 +68,12 @@ export const PlaylistVideoCard = ({ video, type }) => {
           // Will try to export this logic to a utils funtion later
           onClick={(e) => {
             e.stopPropagation();
-            if (type === 'watchlater' && !watchlaterLoading) {
+            if (type === 'watchlaterVideos' && !watchlaterLoading) {
               watchlater();
-            } else if (type === 'liked' && !likeVideoLoading) {
+            } else if (type === 'likedVideos' && !likeVideoLoading) {
               likeVideo();
+            } else if (!addToPlaylistLoading) {
+              addToPlaylistHandler();
             }
           }}
           className={classes['delete-icon']}

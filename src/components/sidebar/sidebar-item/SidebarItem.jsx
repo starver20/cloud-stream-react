@@ -2,23 +2,20 @@ import React from 'react';
 import classes from './SidebarItem.module.css';
 import { Link } from 'react-router-dom';
 
-const SidebarItem = ({ Item, active, type, clickHandler }) => {
+const SidebarItem = ({ Item, active, type, clickHandler, name }) => {
   const user = JSON.parse(localStorage.getItem('user'));
 
-  let authRoutes = ['Likes', 'History', 'Playlist', 'Later'];
+  let authRoutes = [
+    '/playlist/likedVideos',
+    '/playlist/History',
+    'Playlist',
+    '/playlist/watchlaterVideos',
+  ];
 
   return (
     <>
       <Link
-        to={
-          authRoutes.includes(type)
-            ? user
-              ? type
-              : '/login'
-            : type === 'Home'
-            ? '/'
-            : type
-        }
+        to={authRoutes.includes(type) ? (user ? type : '/login') : type}
         onClick={() => {
           clickHandler(type);
         }}
@@ -29,7 +26,7 @@ const SidebarItem = ({ Item, active, type, clickHandler }) => {
         <div className={classes['sidebar-item-icon']}>
           <Item active={active} />
         </div>
-        <span className={classes['sidebar-item-title']}>{type}</span>
+        <span className={classes['sidebar-item-title']}>{name}</span>
       </Link>
     </>
   );

@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { createContext, useContext, useReducer, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useVideos } from '../videos/videos-context';
 
 const authContext = createContext({
   login: async () => {},
@@ -18,6 +19,7 @@ const useAuth = () => useContext(authContext);
 
 const useProvideAuth = () => {
   const navigate = useNavigate();
+  const { videosDispatch } = useVideos();
 
   const [user, setUser] = useState(null);
 
@@ -46,6 +48,7 @@ const useProvideAuth = () => {
     localStorage.removeItem('jwt');
     localStorage.removeItem('user');
     setUser(null);
+    videosDispatch({ type: 'RESET_DATA' });
     navigate('/');
   };
 

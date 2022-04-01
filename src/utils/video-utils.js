@@ -170,7 +170,7 @@ export const addToPlaylist = async (
         );
 
         console.log(response);
-        if (response.status === 201) {
+        if (response.status === 200) {
           videosDispatch({
             type: 'UPDATE_SINGLE_PLAYLIST',
             payload: {
@@ -182,6 +182,32 @@ export const addToPlaylist = async (
         console.log(err);
         alert(err);
       }
+    }
+  } else {
+    navigate('/login');
+    return;
+  }
+};
+
+export const detelePlaylist = async (playlistId, videosDispatch, navigate) => {
+  const jwt = localStorage.getItem('jwt');
+  if (jwt) {
+    let response;
+    try {
+      response = await axios.delete(`/api/user/playlists/${playlistId}`, {
+        headers: { authorization: jwt },
+      });
+
+      console.log(response);
+      if (response.status === 200) {
+        videosDispatch({
+          type: 'UPDATE_PLAYLISTS',
+          payload: { playlists: response.data.playlists },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+      alert(err);
     }
   } else {
     navigate('/login');

@@ -41,6 +41,10 @@ const videosReducer = (state, action) => {
         ...state,
         playlists: updatedPlaylists,
       };
+
+    case 'RESET_DATA': {
+      return initialState;
+    }
     default:
       return state;
   }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classes from './VideoFooter.module.css';
 import { formatDistance } from 'date-fns';
 import { useManipulators } from '../../../utils/useManipulators';
@@ -6,7 +7,7 @@ import { addToWatchlater, createPlaylist } from '../../../utils/video-utils';
 import { useVideos } from '../../../context/videos/videos-context';
 import { useAsync } from '../../../hooks/useAsync';
 import { Modal } from '../../modal/Modal';
-import { PlaylistItem } from '../../PlaylistItem';
+import PlaylistModal from '../playlist-modal/PlaylistModal';
 
 const VideoFooter = ({ video }) => {
   const {
@@ -17,12 +18,13 @@ const VideoFooter = ({ video }) => {
     channelImage,
   } = video;
 
+  const jwt = localStorage.getItem('jwt');
+  const navigate = useNavigate();
+
   const { videosDispatch, playlists } = useVideos();
   const { isAddedToWatchlater } = useManipulators();
 
   const [showModal, setShowModal] = useState(false);
-  const [addingNewPlaylist, setAddingNewPlaylist] = useState(false);
-  const [playlistName, setPlaylistName] = useState('');
 
   const addedToWatchlater = isAddedToWatchlater(video._id);
   console.log(addedToWatchlater);
@@ -30,63 +32,9 @@ const VideoFooter = ({ video }) => {
   const { callAsyncFunction: watchlater, loading: watchlaterLoading } =
     useAsync(addToWatchlater, videosDispatch, video, addedToWatchlater);
 
-  const {
-    callAsyncFunction: createNewPlaylist,
-    loading: createPlaylistLoading,
-  } = useAsync(createPlaylist, videosDispatch, {
-    title: playlistName,
-    description: 'Playlist Description',
-  });
-
   const toggleModal = () => {
     setShowModal((prevState) => !prevState);
   };
-
-  const toggleAddingNewPlaylist = () => {
-    setAddingNewPlaylist((prevState) => !prevState);
-  };
-
-  let content = (
-    <>
-      <div className={classes.playlists}>
-        {playlists.map((playlist) => (
-          <PlaylistItem playlist={playlist} video={video} />
-        ))}
-      </div>
-      <div>
-        {!addingNewPlaylist ? (
-          <span
-            className={classes['add-playlist']}
-            onClick={(e) => {
-              e.stopPropagation();
-              toggleAddingNewPlaylist();
-            }}
-          >
-            + Create a new playlist
-          </span>
-        ) : (
-          <form className={classes['playlist-form']}>
-            <input
-              className={classes['playlist-name-inp']}
-              onChange={(e) => {
-                setPlaylistName(e.target.value);
-              }}
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                toggleAddingNewPlaylist();
-                createNewPlaylist();
-              }}
-              className={`nav--action__login ${classes['create-playlist-btn']}`}
-            >
-              Create
-            </button>
-          </form>
-        )}
-      </div>
-    </>
-  );
 
   return (
     <div className={classes.footer}>
@@ -119,6 +67,10 @@ const VideoFooter = ({ video }) => {
             <li
               onClick={(e) => {
                 e.stopPropagation();
+                if (!jwt) {
+                  navigate('/login');
+                }
+
                 toggleModal();
               }}
               className={classes['playlist']}
@@ -128,7 +80,11 @@ const VideoFooter = ({ video }) => {
           </ul>
         </div>
       </span>
-      {showModal && <Modal onClick={toggleModal}>{content}</Modal>}
+      <PlaylistModal
+        toggleModal={toggleModal}
+        showModal={showModal}
+        video={video}
+      />
     </div>
   );
 };

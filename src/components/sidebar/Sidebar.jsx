@@ -17,25 +17,29 @@ const Sidebar = () => {
         <div>
           <SidebarItem
             Item={HomeIcon}
-            type="Home"
+            type="/"
+            name="Home"
             active={active === 'Home'}
             clickHandler={setActive}
           />
           <SidebarItem
             Item={ExploreIcon}
             type="Explore"
+            name="Explore"
             active={active === 'Explore'}
             clickHandler={setActive}
           />
           <SidebarItem
             Item={LikedVideoIcon}
-            type="Likes"
+            type="/playlist/likedVideos"
+            name="Likes"
             active={active === 'Likes'}
             clickHandler={setActive}
           />
           <SidebarItem
             Item={HistoryIcon}
-            type="History"
+            type="/playlist/History"
+            name="History"
             active={active === 'History'}
             clickHandler={setActive}
           />
@@ -43,12 +47,14 @@ const Sidebar = () => {
           <SidebarItem
             Item={PlaylistIcon}
             type="Playlist"
+            name="Playlist"
             active={active === 'Playlist'}
             clickHandler={setActive}
           />
           <SidebarItem
             Item={WatchlaterIcon}
-            type="Later"
+            type="/playlist/watchlaterVideos"
+            name="Watch Later"
             active={active === 'Later'}
             clickHandler={setActive}
           />
