@@ -7,8 +7,6 @@ import { VideoListing } from './pages/video-listing/VideoListing';
 import { SingleVideo } from './pages/single-video/SingleVideo';
 import { Login } from './pages/auth/Login';
 import { Signup } from './pages/auth/Signup';
-import { LikedVideo } from './pages/liked-video/LikedVideo';
-import { Watchlater } from './pages/watch-later/Watchlater';
 import { Playlists } from './pages/playlist/Playlists';
 import { SinglePlaylist } from './pages/playlist/SinglePlaylist';
 import Mockman from 'mockman-js';
@@ -27,8 +25,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/explore" element={<VideoListing />} />
             <Route path="/video/:videoId" element={<SingleVideo />} />
-            <Route path="/likes" element={<LikedVideo />} />
-            <Route path="/later" element={<Watchlater />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/playlist" element={<Playlists />} />

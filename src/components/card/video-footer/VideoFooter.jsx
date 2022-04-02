@@ -27,7 +27,6 @@ const VideoFooter = ({ video }) => {
   const [showModal, setShowModal] = useState(false);
 
   const addedToWatchlater = isAddedToWatchlater(video._id);
-  console.log(addedToWatchlater);
 
   const { callAsyncFunction: watchlater, loading: watchlaterLoading } =
     useAsync(addToWatchlater, videosDispatch, video, addedToWatchlater);
@@ -51,7 +50,14 @@ const VideoFooter = ({ video }) => {
       </div>
       {/* This stopPropagation is to stop redirecting to video page when user clicks on the opt button in mobile view to see the options */}
       <span onClick={(e) => e.stopPropagation()} className={classes.menu}>
-        OPT
+        <svg
+          className="w-6 h-6"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+        </svg>
         <div className={classes.options}>
           <ul>
             <li

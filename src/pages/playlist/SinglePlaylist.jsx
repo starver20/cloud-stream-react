@@ -9,10 +9,9 @@ export const SinglePlaylist = () => {
   const { playlistType } = useParams();
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
+  const [playlistName, setPlaylistName] = useState(playlistType);
 
   const { [playlistType]: videoData, playlists } = useVideos();
-  console.log(playlistType);
-  console.log(videoData);
 
   useEffect(() => {
     // If its neither likedVideos nor watchLater, its got to be playlist
@@ -21,13 +20,13 @@ export const SinglePlaylist = () => {
         (playlist) => playlist._id === playlistType
       );
 
-      console.log(playlist);
       if (playlist === undefined) {
         navigate('/');
         return;
       }
+
+      setPlaylistName(playlist.title);
       setVideos(playlist.videos);
-      console.log(videoData);
     } else {
       setVideos(videoData);
     }
@@ -44,7 +43,7 @@ export const SinglePlaylist = () => {
           <PlaylistInfoCard
             video={videos[0]}
             total={videos.length}
-            playlistName={playlistType}
+            playlistName={playlistName}
           />
         </div>
       ) : null}

@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './PlaylistCategoryFooter.module.css';
 import { useAsync } from '../../../hooks/useAsync';
 import DeleteIcon from '../../../assets/svg-icons/DeleteIcon';
-import { detelePlaylist } from '../../../utils/video-utils';
+import { deletePlaylist } from '../../../utils/video-utils';
 import { useVideos } from '../../../context/videos/videos-context';
 
 const PlaylistCategoryFooter = ({ title, playlistId }) => {
@@ -11,7 +11,7 @@ const PlaylistCategoryFooter = ({ title, playlistId }) => {
   const {
     callAsyncFunction: deletePlaylistHandler,
     loading: deletePlaylistLoading,
-  } = useAsync(detelePlaylist, videosDispatch, playlistId);
+  } = useAsync(deletePlaylist, videosDispatch, playlistId);
 
   return (
     <div className={classes['playlist-footer']}>

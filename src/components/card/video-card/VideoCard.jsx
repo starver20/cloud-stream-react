@@ -8,14 +8,14 @@ const VideoCard = ({ video }) => {
   const navigate = useNavigate();
   return (
     <div className={classes['video-card']}>
-      <div to={`/video/${youtubeId}`} className={classes['image-container']}>
+      <div className={classes['image-container']}>
         <img
           onClick={() => {
             navigate(`/video/${youtubeId}`);
           }}
           className={classes['image']}
           src={videoThumbnail}
-          alt=""
+          alt={video.title}
         />
       </div>
       <div className={classes['video-footer']}>

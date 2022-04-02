@@ -4,14 +4,12 @@ import { useAsync } from '../../../hooks/useAsync';
 import { useVideos } from '../../../context/videos/videos-context';
 import { addToPlaylist } from '../../../utils/video-utils';
 const PlaylistItem = ({ playlist, video = null }) => {
-  console.log(video === null);
   const [check, setCheck] = useState(
     playlist.videos.find((playlistVideo) => playlistVideo._id === video._id) ===
       undefined
       ? false
       : true
   );
-  console.log(playlist.videos);
 
   const { videosDispatch } = useVideos();
 

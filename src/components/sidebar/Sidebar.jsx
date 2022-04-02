@@ -24,7 +24,7 @@ const Sidebar = () => {
           />
           <SidebarItem
             Item={ExploreIcon}
-            type="Explore"
+            type="/explore"
             name="Explore"
             active={active === 'Explore'}
             clickHandler={setActive}
@@ -46,7 +46,7 @@ const Sidebar = () => {
 
           <SidebarItem
             Item={PlaylistIcon}
-            type="Playlist"
+            type="/playlist"
             name="Playlist"
             active={active === 'Playlist'}
             clickHandler={setActive}

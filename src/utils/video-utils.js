@@ -68,7 +68,6 @@ export const addToWatchlater = async (
           { headers: { authorization: jwt } }
         );
 
-        console.log(response);
         if (response.status === 201) {
           videosDispatch({
             type: 'UPDATE_WATCH_LATER_VIDEOS',
@@ -84,8 +83,6 @@ export const addToWatchlater = async (
         response = await axios.delete(`/api/user/watchlater/${video._id}`, {
           headers: { authorization: jwt },
         });
-
-        console.log(response);
 
         if (response.status === 200) {
           videosDispatch({
@@ -115,7 +112,6 @@ export const createPlaylist = async (playlist, videosDispatch, navigate) => {
         { headers: { authorization: jwt } }
       );
 
-      console.log(response);
       if (response.status === 201) {
         videosDispatch({
           type: 'UPDATE_PLAYLISTS',
@@ -149,7 +145,6 @@ export const addToPlaylist = async (
           { headers: { authorization: jwt } }
         );
 
-        console.log(response);
         if (response.status === 201) {
           videosDispatch({
             type: 'UPDATE_SINGLE_PLAYLIST',
@@ -169,7 +164,6 @@ export const addToPlaylist = async (
           { headers: { authorization: jwt } }
         );
 
-        console.log(response);
         if (response.status === 200) {
           videosDispatch({
             type: 'UPDATE_SINGLE_PLAYLIST',
@@ -189,7 +183,7 @@ export const addToPlaylist = async (
   }
 };
 
-export const detelePlaylist = async (playlistId, videosDispatch, navigate) => {
+export const deletePlaylist = async (playlistId, videosDispatch, navigate) => {
   const jwt = localStorage.getItem('jwt');
   if (jwt) {
     let response;
@@ -198,7 +192,6 @@ export const detelePlaylist = async (playlistId, videosDispatch, navigate) => {
         headers: { authorization: jwt },
       });
 
-      console.log(response);
       if (response.status === 200) {
         videosDispatch({
           type: 'UPDATE_PLAYLISTS',

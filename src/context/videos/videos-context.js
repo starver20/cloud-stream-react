@@ -28,8 +28,6 @@ const videosReducer = (state, action) => {
         (playlist) => playlist._id === action.payload.playlist._id
       );
 
-      console.log(index);
-
       if (index === -1) {
         return state;
       }
