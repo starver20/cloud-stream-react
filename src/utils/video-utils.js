@@ -56,7 +56,6 @@ export const addToWatchlater = async (
   video,
   check
 ) => {
-  console.log(video, check);
   const jwt = localStorage.getItem('jwt');
   if (jwt) {
     let response;
@@ -210,6 +209,7 @@ export const deletePlaylist = async (videosDispatch, navigate, playlistId) => {
 
 export const addToHistory = async (videosDispatch, navigate, video, check) => {
   const jwt = localStorage.getItem('jwt');
+  console.log(check);
   if (jwt) {
     let response;
     if (!check) {

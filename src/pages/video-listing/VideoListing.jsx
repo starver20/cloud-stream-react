@@ -7,10 +7,13 @@ const VideoListing = () => {
   const { videos } = useVideos();
 
   return (
-    <div className={classes['video-display']}>
-      {videos.map((video) => (
-        <VideoCard key={video._id} video={video} />
-      ))}
+    <div className={classes.container}>
+      <div className={classes.filters}></div>
+      <div className={classes['video-display']}>
+        {videos.map((video) => (
+          <VideoCard key={video._id} video={video} />
+        ))}
+      </div>
     </div>
   );
 };

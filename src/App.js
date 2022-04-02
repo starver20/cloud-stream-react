@@ -28,6 +28,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/playlist" element={<Playlists />} />
+            <Route path="/:playlistType" element={<SinglePlaylist />} />
             <Route
               path="/playlist/:playlistType"
               element={<SinglePlaylist />}

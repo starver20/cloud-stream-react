@@ -6,6 +6,9 @@
   place-content: center;
 }
 
+.container {
+}
+
 @media (max-width: 600px) {
   .video-display {
     grid-template-columns: repeat(auto-fit, 100%);

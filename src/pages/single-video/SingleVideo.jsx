@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { VideoPlayer } from '../../components/video-player/VideoPlayer';
 import { RightSidebar } from '../../components/sidebar/right-sidebar/RightSidebar';
 import classes from './SingleVideo.module.css';
 import { useParams } from 'react-router-dom';
 import { useVideos } from '../../context/videos/videos-context';
+import { useAsync } from '../../hooks/useAsync';
+import { addToHistory } from '../../utils/video-utils';
+import { useManipulators } from '../../utils/useManipulators';
 
 const SingleVideo = () => {
   const { videoId } = useParams();

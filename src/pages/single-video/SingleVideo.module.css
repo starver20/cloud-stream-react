@@ -27,3 +27,9 @@
 .right-sidebar::-webkit-scrollbar {
   display: none;
 }
+
+@media (max-width: 1080px) {
+  .right-sidebar {
+    display: none;
+  }
+}
