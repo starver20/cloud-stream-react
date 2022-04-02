@@ -8,12 +8,12 @@ import LikedVideoIcon from '../../assets/svg-icons/LikedVideoIcon';
 import PlaylistIcon from '../../assets/svg-icons/PlaylistIcon';
 import WatchlaterIcon from '../../assets/svg-icons/WatchlaterIcon';
 
-const Sidebar = () => {
+const Sidebar = ({ toggleSidebar }) => {
   // const [active, setActive] = useState('Home');
 
   return (
     <>
-      <div className={classes.sidebar}>
+      <div onClick={toggleSidebar} className={classes.sidebar}>
         <div>
           <SidebarItem Item={HomeIcon} type="/" name="Home" />
           <SidebarItem Item={ExploreIcon} type="/explore" name="Explore" />

@@ -5,7 +5,7 @@ import { useAuth } from '../../context/auth/auth-context';
 import { useNavigate } from 'react-router-dom';
 import { useVideos } from '../../context/videos/videos-context';
 
-const Navbar = () => {
+const Navbar = ({ toggleSidebar }) => {
   const { logout } = useAuth();
   const { videosDispatch } = useVideos();
 
@@ -36,6 +36,7 @@ const Navbar = () => {
         <nav className="navbar">
           <div className={classes.logo}>
             <svg
+              onClick={toggleSidebar}
               class="w-6 h-6"
               fill="currentColor"
               viewBox="0 0 20 20"
@@ -47,9 +48,9 @@ const Navbar = () => {
                 clip-rule="evenodd"
               ></path>
             </svg>
-            <a href="#" className="nav-logo">
+            <Link to={'/'} className="nav-logo">
               CloudStream
-            </a>
+            </Link>
           </div>
           <div className="nav-search">
             <input type="text" name="search" id="search" placeholder="Search" />

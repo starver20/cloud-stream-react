@@ -87,6 +87,7 @@
   overflow-y: auto;
   background-color: var(--background-color);
   color: var(--primary-color);
+  transition: all 1s;
 }
 
 /* .sidebar:hover,
@@ -105,5 +106,13 @@
 @media (max-width: 1200px) {
   .sidebar {
     display: none;
+    position: fixed;
+    z-index: 30;
+    left: -260px;
   }
+}
+
+.active {
+  display: block;
+  left: 0;
 }

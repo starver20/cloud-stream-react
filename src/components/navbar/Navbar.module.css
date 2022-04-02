@@ -56,3 +56,9 @@
   font-size: var(--body-3);
   width: 100%;
 }
+
+@media (min-width: 1200px) {
+  .logo > svg {
+    display: none;
+  }
+}
