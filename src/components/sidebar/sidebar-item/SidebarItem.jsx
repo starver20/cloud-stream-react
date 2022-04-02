@@ -7,8 +7,8 @@ const SidebarItem = ({ Item, active, type, clickHandler, name }) => {
 
   let authRoutes = [
     '/playlist/likedVideos',
-    '/playlist/History',
-    'Playlist',
+    '/playlist/history',
+    '/playlist',
     '/playlist/watchlaterVideos',
   ];
 

@@ -8,7 +8,7 @@ const useAsync = (asyncFunction, dispatch, payload, check) => {
   const callAsyncFunction = async () => {
     try {
       setLoading(true);
-      await asyncFunction(payload, dispatch, navigate, check);
+      await asyncFunction(dispatch, navigate, payload, check);
       setLoading(false);
     } catch (err) {
       console.log(err);

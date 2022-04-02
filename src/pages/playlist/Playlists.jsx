@@ -7,7 +7,7 @@ import PlaylistCategoryFooter from '../../components/card/playlist-category-foot
 import PlaylistModal from '../../components/card/playlist-modal/PlaylistModal';
 
 const Playlists = () => {
-  const { playlists, videosDispatch } = useVideos();
+  const { playlists } = useVideos();
 
   const [showModal, setShowModal] = useState(false);
 

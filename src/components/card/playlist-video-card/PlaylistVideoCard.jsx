@@ -6,6 +6,7 @@ import {
   addToWatchlater,
   addToLikedVideo,
   addToPlaylist,
+  addToHistory,
 } from '../../../utils/video-utils';
 import { useAsync } from '../../../hooks/useAsync';
 import { useVideos } from '../../../context/videos/videos-context';
@@ -27,6 +28,12 @@ export const PlaylistVideoCard = ({ video, type, playlistId }) => {
   // add/remove from watch later
   const { callAsyncFunction: watchlater, loading: watchlaterLoading } =
     useAsync(addToWatchlater, videosDispatch, video, true);
+
+  // add/remove from history
+  const {
+    callAsyncFunction: addToHistoryHandler,
+    loading: addToHistoryLoading,
+  } = useAsync(addToHistory, videosDispatch, video, true);
 
   // add/remove from playlist
   const {
@@ -72,6 +79,8 @@ export const PlaylistVideoCard = ({ video, type, playlistId }) => {
               watchlater();
             } else if (type === 'likedVideos' && !likeVideoLoading) {
               likeVideo();
+            } else if (type === 'history' && !addToHistoryLoading) {
+              addToHistoryHandler();
             } else if (!addToPlaylistLoading) {
               addToPlaylistHandler();
             }

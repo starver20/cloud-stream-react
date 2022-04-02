@@ -6,6 +6,7 @@ const initialState = {
   likedVideos: [],
   watchlaterVideos: [],
   playlists: [],
+  history: [],
   videosDispatch: () => {},
 };
 
@@ -23,7 +24,7 @@ const videosReducer = (state, action) => {
       console.log(action.payload.playlists);
       return { ...state, playlists: action.payload.playlists };
 
-    case 'UPDATE_SINGLE_PLAYLIST':
+    case 'UPDATE_SINGLE_PLAYLIST': {
       const index = state.playlists.findIndex(
         (playlist) => playlist._id === action.payload.playlist._id
       );
@@ -31,7 +32,6 @@ const videosReducer = (state, action) => {
       if (index === -1) {
         return state;
       }
-
       let updatedPlaylists = [...state.playlists];
       updatedPlaylists[index] = action.payload.playlist;
 
@@ -39,6 +39,11 @@ const videosReducer = (state, action) => {
         ...state,
         playlists: updatedPlaylists,
       };
+    }
+
+    case 'UPDATE_HISTORY': {
+      return { ...state, history: action.payload.history };
+    }
 
     case 'RESET_DATA': {
       return initialState;
