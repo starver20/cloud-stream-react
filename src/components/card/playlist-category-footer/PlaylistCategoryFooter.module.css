@@ -1,0 +1,8 @@
+.playlist-title {
+  font-size: var(--body-1);
+}
+
+.playlist-footer {
+  display: flex;
+  justify-content: space-between;
+}

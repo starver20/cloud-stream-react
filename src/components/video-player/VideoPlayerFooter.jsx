@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './VideoPlayerFooter.module.css';
 import { formatDistance } from 'date-fns';
 import LikedVideoIcon from '../../assets/svg-icons/LikedVideoIcon';
@@ -9,6 +9,7 @@ import { useManipulators } from '../../utils/useManipulators';
 import { addToLikedVideo, addToWatchlater } from '../../utils/video-utils';
 import { useVideos } from '../../context/videos/videos-context';
 import { useAsync } from '../../hooks/useAsync';
+import PlaylistModal from '../card/playlist-modal/PlaylistModal';
 
 const VideoPlayerFooter = ({ video }) => {
   const {
@@ -21,6 +22,7 @@ const VideoPlayerFooter = ({ video }) => {
     description,
   } = video;
 
+  const [showModal, setShowModal] = useState(false);
   const { videosDispatch } = useVideos();
   const { isLiked, isAddedToWatchlater } = useManipulators();
 
@@ -29,13 +31,17 @@ const VideoPlayerFooter = ({ video }) => {
 
   const { callAsyncFunction: likeVideo, loading: likeVideoLoading } = useAsync(
     addToLikedVideo,
-    liked,
     videosDispatch,
-    video
+    video,
+    liked
   );
 
   const { callAsyncFunction: watchlater, loading: watchlaterLoading } =
-    useAsync(addToWatchlater, addedToWatchlater, videosDispatch, video);
+    useAsync(addToWatchlater, videosDispatch, video, addedToWatchlater);
+
+  const toggleModal = () => {
+    setShowModal((prevState) => !prevState);
+  };
 
   return (
     <>
@@ -55,7 +61,7 @@ const VideoPlayerFooter = ({ video }) => {
               <ShareIcon active={false} />
               SHARE
             </p>
-            <p>
+            <p onClick={toggleModal}>
               <PlaylistIcon active={false} />
               SAVE
             </p>
@@ -73,6 +79,11 @@ const VideoPlayerFooter = ({ video }) => {
           <p className={classes['channel-desc']}>{description}</p>
         </div>
       </div>
+      <PlaylistModal
+        toggleModal={toggleModal}
+        showModal={showModal}
+        video={video}
+      />
     </>
   );
 };

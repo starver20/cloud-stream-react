@@ -7,14 +7,16 @@ const VideoCard = ({ video }) => {
   const { videoThumbnail, youtubeId } = video;
   const navigate = useNavigate();
   return (
-    <div
-      onClick={() => {
-        navigate(`/video/${youtubeId}`);
-      }}
-      className={classes['video-card']}
-    >
-      <div to={`/video/${youtubeId}`} className={classes['image-container']}>
-        <img className={classes['image']} src={videoThumbnail} alt="" />
+    <div className={classes['video-card']}>
+      <div className={classes['image-container']}>
+        <img
+          onClick={() => {
+            navigate(`/video/${youtubeId}`);
+          }}
+          className={classes['image']}
+          src={videoThumbnail}
+          alt={video.title}
+        />
       </div>
       <div className={classes['video-footer']}>
         <VideoFooter video={video} />

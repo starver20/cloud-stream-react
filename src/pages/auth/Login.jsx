@@ -21,6 +21,7 @@ const Login = () => {
 
       if (status === 200) {
         //  Initialize playlist, history and liked videos here
+        console.log(user);
         videosDispatch({
           type: 'UPDATE_LIKED_VIDEOS',
           payload: { likedVideos: user.likes },
@@ -28,6 +29,10 @@ const Login = () => {
         videosDispatch({
           type: 'UPDATE_WATCH_LATER_VIDEOS',
           payload: { watchlaterVideos: user.watchlater },
+        });
+        videosDispatch({
+          type: 'UPDATE_PLAYLISTS',
+          payload: { playlists: user.playlists },
         });
         navigate('/');
       } else {

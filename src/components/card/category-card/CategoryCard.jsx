@@ -1,7 +1,12 @@
 import React from 'react';
 import classes from '../video-card/VideoCard.module.css';
+import emptyImage from '../../../assets/images/empty.jpg';
 
-const CategoryCard = ({ categoryThumbnail, category, description }) => {
+const CategoryCard = ({
+  categoryThumbnail = emptyImage,
+  category,
+  description,
+}) => {
   return (
     <div className={classes['video-card']}>
       <div className={classes['image-container']}>

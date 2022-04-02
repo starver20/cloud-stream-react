@@ -1,0 +1,28 @@
+.add-playlist {
+  font-size: var(--body-2);
+  cursor: pointer;
+  color: white;
+}
+
+.playlist-form {
+  display: flex;
+  justify-content: space-around;
+}
+
+.create-playlist-btn {
+  background: none;
+}
+
+.playlist-name-inp {
+  width: 70%;
+}
+
+.playlists {
+  display: flex;
+  flex-direction: column;
+}
+
+.playlists > * {
+  margin-bottom: 1rem;
+  color: white;
+}

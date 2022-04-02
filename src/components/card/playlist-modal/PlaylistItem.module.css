@@ -1,0 +1,8 @@
+.playlist-item {
+  display: flex;
+  align-items: center;
+}
+.playlist-item > label {
+  margin-left: 1rem;
+  font-size: var(--body-2);
+}
