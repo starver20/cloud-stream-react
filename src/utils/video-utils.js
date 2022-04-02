@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 export const addToLikedVideo = async (
-  video,
   videosDispatch,
   navigate,
+  video,
   check
 ) => {
   const jwt = localStorage.getItem('jwt');
@@ -51,9 +51,9 @@ export const addToLikedVideo = async (
 };
 
 export const addToWatchlater = async (
-  video,
   videosDispatch,
   navigate,
+  video,
   check
 ) => {
   console.log(video, check);
@@ -101,7 +101,7 @@ export const addToWatchlater = async (
   }
 };
 
-export const createPlaylist = async (playlist, videosDispatch, navigate) => {
+export const createPlaylist = async (videosDispatch, navigate, playlist) => {
   const jwt = localStorage.getItem('jwt');
   if (jwt) {
     let response;
@@ -129,9 +129,9 @@ export const createPlaylist = async (playlist, videosDispatch, navigate) => {
 };
 
 export const addToPlaylist = async (
-  payload,
   videosDispatch,
   navigate,
+  payload,
   check
 ) => {
   const jwt = localStorage.getItem('jwt');
@@ -183,7 +183,7 @@ export const addToPlaylist = async (
   }
 };
 
-export const deletePlaylist = async (playlistId, videosDispatch, navigate) => {
+export const deletePlaylist = async (videosDispatch, navigate, playlistId) => {
   const jwt = localStorage.getItem('jwt');
   if (jwt) {
     let response;
@@ -196,6 +196,75 @@ export const deletePlaylist = async (playlistId, videosDispatch, navigate) => {
         videosDispatch({
           type: 'UPDATE_PLAYLISTS',
           payload: { playlists: response.data.playlists },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+      alert(err);
+    }
+  } else {
+    navigate('/login');
+    return;
+  }
+};
+
+export const addToHistory = async (videosDispatch, navigate, video, check) => {
+  const jwt = localStorage.getItem('jwt');
+  if (jwt) {
+    let response;
+    if (!check) {
+      try {
+        response = await axios.post(
+          '/api/user/history',
+          { video },
+          { headers: { authorization: jwt } }
+        );
+        if (response.status === 201) {
+          videosDispatch({
+            type: 'UPDATE_HISTORY',
+            payload: { history: response.data.history },
+          });
+        }
+      } catch (err) {
+        console.log(err);
+        alert(err);
+      }
+    } else {
+      try {
+        response = await axios.delete(`/api/user/history/${video._id}`, {
+          headers: { authorization: jwt },
+        });
+
+        if (response.status === 200) {
+          videosDispatch({
+            type: 'UPDATE_HISTORY',
+            payload: { history: response.data.history },
+          });
+        }
+      } catch (err) {
+        console.log(err);
+        alert(err);
+      }
+    }
+  } else {
+    navigate('/login');
+    return;
+  }
+};
+
+export const clearHistory = async (videosDispatch, navigate) => {
+  const jwt = localStorage.getItem('jwt');
+  if (jwt) {
+    let response;
+    try {
+      response = await axios.delete('/api/user/history/all', {
+        headers: { authorization: jwt },
+      });
+
+      if (response.status === 200) {
+        videosDispatch({
+          type: 'UPDATE_HISTORY',
+          payload: { history: [] },
         });
       }
     } catch (err) {

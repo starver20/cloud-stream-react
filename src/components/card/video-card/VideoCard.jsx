@@ -1,16 +1,33 @@
 import React from 'react';
 import { VideoFooter } from '../video-footer/VideoFooter';
 import classes from './VideoCard.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAsync } from '../../../hooks/useAsync';
+import { addToHistory } from '../../../utils/video-utils';
+import { useManipulators } from '../../../utils/useManipulators';
+import { useVideos } from '../../../context/videos/videos-context';
 
 const VideoCard = ({ video }) => {
   const { videoThumbnail, youtubeId } = video;
   const navigate = useNavigate();
+
+  const { isPresentInHistory } = useManipulators();
+  const { videosDispatch } = useVideos();
+
+  const isInHistory = isPresentInHistory(video._id);
+
+  const { callAsyncFunction: addToHistoryHandler } = useAsync(
+    addToHistory,
+    videosDispatch,
+    video,
+    isInHistory
+  );
   return (
     <div className={classes['video-card']}>
       <div className={classes['image-container']}>
         <img
-          onClick={() => {
+          onClick={async () => {
+            await addToHistoryHandler();
             navigate(`/video/${youtubeId}`);
           }}
           className={classes['image']}

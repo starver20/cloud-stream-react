@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from './VideoPlayer.module.css';
 import { VideoPlayerFooter } from './VideoPlayerFooter';
 
 const VideoPlayer = ({ video }) => {

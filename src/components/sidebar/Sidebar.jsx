@@ -38,7 +38,7 @@ const Sidebar = () => {
           />
           <SidebarItem
             Item={HistoryIcon}
-            type="/playlist/History"
+            type="/playlist/history"
             name="History"
             active={active === 'History'}
             clickHandler={setActive}

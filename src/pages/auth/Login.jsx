@@ -34,6 +34,10 @@ const Login = () => {
           type: 'UPDATE_PLAYLISTS',
           payload: { playlists: user.playlists },
         });
+        videosDispatch({
+          type: 'UPDATE_HISTORY',
+          payload: { history: user.history },
+        });
         navigate('/');
       } else {
         alert('Invalid email or password');

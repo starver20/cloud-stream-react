@@ -1,6 +1,9 @@
 .main-container {
+  padding: 2rem;
+}
+
+.main {
   display: flex;
-  padding: 1rem;
 }
 
 .playlist-info {
@@ -23,6 +26,10 @@
 
 .sub-message {
   font-size: var(--header-2);
+}
+
+.clear-history {
+  background: none;
 }
 
 @media (max-width: 900px) {
