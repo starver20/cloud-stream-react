@@ -3,18 +3,20 @@ import classes from './Home.module.css';
 import Carousel from '../../components/carousel/Carousel';
 import { CategoryCard } from '../../components/card/category-card/CategoryCard';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useVideos } from '../../context/videos/videos-context';
 
 const Home = () => {
-  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+  const { videosDispatch, categories } = useVideos();
 
-  useEffect(() => {
-    const getCategories = async () => {
-      let response = await axios.get('/api/categories');
-      setCategories(response.data.categories);
-    };
-
-    getCategories();
-  }, []);
+  const categoryClickHandler = (e, category) => {
+    videosDispatch({
+      type: 'HOME_CATEGORY',
+      payload: { category: category.categoryName },
+    });
+    navigate('/explore');
+  };
 
   return (
     <div>
@@ -24,11 +26,17 @@ const Home = () => {
       <p className={classes['category-title']}>Categories</p>
       <div className={classes.category}>
         {categories.map((category) => (
-          <CategoryCard
-            category={category.categoryName}
-            categoryThumbnail={category.categoryThumbnail}
-            description={category.description}
-          />
+          <div
+            onClick={(e) => {
+              categoryClickHandler(e, category);
+            }}
+          >
+            <CategoryCard
+              category={category.categoryName}
+              categoryThumbnail={category.categoryThumbnail}
+              description={category.description}
+            />
+          </div>
         ))}
       </div>
     </div>

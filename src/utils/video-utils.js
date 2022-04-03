@@ -209,7 +209,6 @@ export const deletePlaylist = async (videosDispatch, navigate, playlistId) => {
 
 export const addToHistory = async (videosDispatch, navigate, video, check) => {
   const jwt = localStorage.getItem('jwt');
-  console.log(check);
   if (jwt) {
     let response;
     if (!check) {

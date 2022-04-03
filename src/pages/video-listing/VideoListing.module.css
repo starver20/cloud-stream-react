@@ -7,6 +7,21 @@
 }
 
 .container {
+  padding: 1rem;
+}
+
+.filters {
+  display: flex;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-bar > button {
+  background: none;
 }
 
 @media (max-width: 600px) {
