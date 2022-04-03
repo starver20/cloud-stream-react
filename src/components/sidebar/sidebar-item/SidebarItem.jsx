@@ -6,10 +6,10 @@ const SidebarItem = ({ Item, type, name }) => {
   const user = JSON.parse(localStorage.getItem('user'));
 
   let authRoutes = [
-    '/playlist/likedVideos',
-    '/playlist/history',
+    '/likedVideos',
+    '/history',
     '/playlist',
-    '/playlist/watchlaterVideos',
+    '/watchlaterVideos',
   ];
 
   return (
