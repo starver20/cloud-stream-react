@@ -32,9 +32,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/explore" element={<VideoListing />} />
             <Route path="/video/:videoId" element={<SingleVideo />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/playlist" element={<Playlists />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/:playlistType" element={<SinglePlaylist />} />
             <Route
               path="/playlist/:playlistType"

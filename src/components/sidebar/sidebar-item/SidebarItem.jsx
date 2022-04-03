@@ -18,7 +18,15 @@ const SidebarItem = ({ Item, type, name }) => {
         to={authRoutes.includes(type) ? (user ? type : '/login') : type}
         className={({ isActive }) => {
           return `${classes['sidebar-item-container']} ${
-            isActive ? classes.active : ''
+            authRoutes.includes(type)
+              ? user
+                ? isActive
+                  ? classes.active
+                  : ''
+                : ''
+              : isActive
+              ? classes.active
+              : ''
           }`;
         }}
       >
