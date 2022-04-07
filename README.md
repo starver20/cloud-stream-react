@@ -1,4 +1,46 @@
-## Video Library Backend
+#CloudStream
 
-This folder contains the Mock Backend created for Video Library App. It contains different API end-points and database configuration for building Video Library; so that you can focus on building Frontend.
-# cloud-strem-react
+## **Tech Stack**
+
+- React
+- React Context API
+- React router
+- Razorpay for Payments
+- CloudUI
+
+## **Key Features**
+
+- Auth
+
+  - Login
+  - Logout
+  - Signup
+
+- Filter Videos By
+
+  - Categories
+
+- Playlist
+
+  - Create new playlist
+  - Add videos to playlist
+  - Remove videos from playlist
+  - Delete playlist
+
+- History
+
+  - Add to history
+  - Remove from history
+  - Clear history
+
+- Watchlater
+
+  - Add to watchlater
+  - Remove from watchlater
+
+- Likes
+
+  - Add to Likes
+  - Remove from Likes
+
+- Single video page
