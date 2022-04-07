@@ -5,7 +5,6 @@
 - React
 - React Context API
 - React router
-- Razorpay for Payments
 - CloudUI
 
 ## **Key Features**
