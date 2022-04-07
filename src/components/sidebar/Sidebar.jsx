@@ -8,56 +8,24 @@ import LikedVideoIcon from '../../assets/svg-icons/LikedVideoIcon';
 import PlaylistIcon from '../../assets/svg-icons/PlaylistIcon';
 import WatchlaterIcon from '../../assets/svg-icons/WatchlaterIcon';
 
-const Sidebar = () => {
-  const [active, setActive] = useState('Home');
+const Sidebar = ({ toggleSidebar }) => {
+  // const [active, setActive] = useState('Home');
 
   return (
     <>
-      <div className={classes.sidebar}>
+      <div onClick={toggleSidebar} className={classes.sidebar}>
         <div>
-          <SidebarItem
-            Item={HomeIcon}
-            type="/"
-            name="Home"
-            active={active === 'Home'}
-            clickHandler={setActive}
-          />
-          <SidebarItem
-            Item={ExploreIcon}
-            type="/explore"
-            name="Explore"
-            active={active === 'Explore'}
-            clickHandler={setActive}
-          />
-          <SidebarItem
-            Item={LikedVideoIcon}
-            type="/playlist/likedVideos"
-            name="Likes"
-            active={active === 'Likes'}
-            clickHandler={setActive}
-          />
-          <SidebarItem
-            Item={HistoryIcon}
-            type="/playlist/history"
-            name="History"
-            active={active === 'History'}
-            clickHandler={setActive}
-          />
-
-          <SidebarItem
-            Item={PlaylistIcon}
-            type="/playlist"
-            name="Playlist"
-            active={active === 'Playlist'}
-            clickHandler={setActive}
-          />
+          <SidebarItem Item={HomeIcon} type="/" name="Home" />
+          <SidebarItem Item={ExploreIcon} type="/explore" name="Explore" />
+          <SidebarItem Item={LikedVideoIcon} type="/likedVideos" name="Likes" />
+          <SidebarItem Item={HistoryIcon} type="/history" name="History" />
           <SidebarItem
             Item={WatchlaterIcon}
-            type="/playlist/watchlaterVideos"
+            type="/watchlaterVideos"
             name="Watch Later"
-            active={active === 'Later'}
-            clickHandler={setActive}
           />
+
+          <SidebarItem Item={PlaylistIcon} type="/playlist" name="Playlist" />
         </div>
       </div>
     </>

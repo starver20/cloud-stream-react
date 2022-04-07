@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { VideoPlayer } from '../../components/video-player/VideoPlayer';
 import { RightSidebar } from '../../components/sidebar/right-sidebar/RightSidebar';
 import classes from './SingleVideo.module.css';
 import { useParams } from 'react-router-dom';
 import { useVideos } from '../../context/videos/videos-context';
+import axios from 'axios';
 
 const SingleVideo = () => {
   const { videoId } = useParams();
-  const { videos } = useVideos();
+  const [video, setVideo] = useState({});
 
-  let video = videos.filter((video) => video.youtubeId === videoId);
+  useEffect(() => {
+    const getVideo = async () => {
+      let response = await axios.get(`/api/video/${videoId}`);
+      setVideo(response.data.video);
+    };
+
+    getVideo();
+  }, [videoId]);
 
   return (
     <div className={classes['single-video']}>
       <div className={classes['video-player']}>
-        <VideoPlayer video={video[0]} />
+        <VideoPlayer video={video} />
       </div>
       <div className={classes['right-sidebar']}>
         <RightSidebar />

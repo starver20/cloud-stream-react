@@ -1,0 +1,32 @@
+.chip {
+  padding: 5px 10px;
+  background-color: var(--sub-text-color);
+  width: fit-content;
+  border-radius: 3rem;
+  display: flex;
+  align-items: center;
+  margin: 4px;
+  font-size: var(--body-3);
+  cursor: pointer;
+}
+
+.chip:hover {
+  background-color: var(--background-color);
+}
+
+.active {
+  background-color: var(--grey-light-color);
+  color: black;
+}
+
+svg {
+  width: 1.2rem;
+  cursor: pointer;
+  /* pointer-events: none; */
+}
+
+@media (max-width: 600px) {
+  .chip {
+    font-size: var(--body-4);
+  }
+}

@@ -11,23 +11,22 @@ const VideoCard = ({ video }) => {
   const { videoThumbnail, youtubeId } = video;
   const navigate = useNavigate();
 
-  const { isPresentInHistory } = useManipulators();
-  const { videosDispatch } = useVideos();
+  // const { isPresentInHistory } = useManipulators();
+  // const { videosDispatch } = useVideos();
 
-  const isInHistory = isPresentInHistory(video._id);
+  // const isInHistory = isPresentInHistory(video._id);
 
-  const { callAsyncFunction: addToHistoryHandler } = useAsync(
-    addToHistory,
-    videosDispatch,
-    video,
-    isInHistory
-  );
+  // const { callAsyncFunction: addToHistoryHandler } = useAsync(
+  //   addToHistory,
+  //   videosDispatch,
+  //   video,
+  //   isInHistory
+  // );
   return (
     <div className={classes['video-card']}>
       <div className={classes['image-container']}>
         <img
           onClick={async () => {
-            await addToHistoryHandler();
             navigate(`/video/${youtubeId}`);
           }}
           className={classes['image']}

@@ -17,7 +17,7 @@ const VideoPlayerFooter = ({ video }) => {
     views,
     likes,
     channelImage,
-    uploadDate,
+    uploadDate = 1200000000,
     channelName,
     description,
   } = video;

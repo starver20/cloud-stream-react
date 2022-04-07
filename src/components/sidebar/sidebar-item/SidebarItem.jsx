@@ -1,33 +1,40 @@
 import React from 'react';
 import classes from './SidebarItem.module.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-const SidebarItem = ({ Item, active, type, clickHandler, name }) => {
+const SidebarItem = ({ Item, type, name }) => {
   const user = JSON.parse(localStorage.getItem('user'));
 
   let authRoutes = [
-    '/playlist/likedVideos',
-    '/playlist/history',
+    '/likedVideos',
+    '/history',
     '/playlist',
-    '/playlist/watchlaterVideos',
+    '/watchlaterVideos',
   ];
 
   return (
     <>
-      <Link
+      <NavLink
         to={authRoutes.includes(type) ? (user ? type : '/login') : type}
-        onClick={() => {
-          clickHandler(type);
+        className={({ isActive }) => {
+          return `${classes['sidebar-item-container']} ${
+            authRoutes.includes(type)
+              ? user
+                ? isActive
+                  ? classes.active
+                  : ''
+                : ''
+              : isActive
+              ? classes.active
+              : ''
+          }`;
         }}
-        className={`${classes['sidebar-item-container']} ${
-          active && classes.active
-        }`}
       >
         <div className={classes['sidebar-item-icon']}>
-          <Item active={active} />
+          <Item active={false} />
         </div>
         <span className={classes['sidebar-item-title']}>{name}</span>
-      </Link>
+      </NavLink>
     </>
   );
 };

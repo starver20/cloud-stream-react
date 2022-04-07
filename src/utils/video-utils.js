@@ -56,7 +56,6 @@ export const addToWatchlater = async (
   video,
   check
 ) => {
-  console.log(video, check);
   const jwt = localStorage.getItem('jwt');
   if (jwt) {
     let response;

@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import Sidebar from './components/sidebar/Sidebar';
 import { Home } from './pages/home/Home';
@@ -10,14 +10,21 @@ import { Signup } from './pages/auth/Signup';
 import { Playlists } from './pages/playlist/Playlists';
 import { SinglePlaylist } from './pages/playlist/SinglePlaylist';
 import Mockman from 'mockman-js';
+import { useState } from 'react';
 
 function App() {
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const toggleSidebar = () => {
+    setShowSidebar((prevState) => !prevState);
+  };
+
   return (
     <div>
-      <Navbar />
+      <Navbar toggleSidebar={toggleSidebar} />
       <div className="main-content">
-        <aside className="sidebar">
-          <Sidebar />
+        <aside className={`sidebar ${showSidebar ? 'active' : ''}`}>
+          <Sidebar showSidebar={showSidebar} toggleSidebar={toggleSidebar} />
         </aside>
 
         <main>
@@ -25,9 +32,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/explore" element={<VideoListing />} />
             <Route path="/video/:videoId" element={<SingleVideo />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/playlist" element={<Playlists />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/:playlistType" element={<SinglePlaylist />} />
             <Route
               path="/playlist/:playlistType"
               element={<SinglePlaylist />}

@@ -2,15 +2,39 @@ import React, { useEffect, useState } from 'react';
 import classes from './VideoListing.module.css';
 import { VideoCard } from '../../components/card/video-card/VideoCard';
 import { useVideos } from '../../context/videos/videos-context';
+import FilterChip from '../../components/filter-chip/FilterChip';
 
 const VideoListing = () => {
-  const { videos } = useVideos();
+  const { videos, categories, categoryFilter, videosDispatch } = useVideos();
+
+  let listingVideos = videos.filter((video) =>
+    categoryFilter.length === 0 ? true : categoryFilter.includes(video.category)
+  );
+
+  const resetFilters = () => {
+    videosDispatch({ type: 'RESET_FILTERS' });
+  };
 
   return (
-    <div className={classes['video-display']}>
-      {videos.map((video) => (
-        <VideoCard key={video._id} video={video} />
-      ))}
+    <div className={classes.container}>
+      <div className={classes['filter-bar']}>
+        <div className={classes.filters}>
+          {categories.map((category) => (
+            <FilterChip
+              title={category.categoryName}
+              active={categoryFilter.includes(category.categoryName)}
+            />
+          ))}
+        </div>
+        <button onClick={resetFilters} className="nav--action__login">
+          CLEAR
+        </button>
+      </div>
+      <div className={classes['video-display']}>
+        {listingVideos.map((video) => (
+          <VideoCard key={video._id} video={video} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { Response } from "miragejs";
+import { Response } from 'miragejs';
 
 /**
  * All the routes related to Videos are present here.
@@ -37,9 +37,9 @@ export const getAllVideosHandler = function () {
  * */
 
 export const getVideoHandler = function (schema, request) {
-  const { videoId } = request.params;
+  const { youtubeId } = request.params;
   try {
-    const video = schema.videos.findBy({ _id: videoId }).attrs;
+    const video = schema.videos.findBy({ youtubeId }).attrs;
     return new Response(200, {}, { video });
   } catch (error) {
     return new Response(

@@ -36,6 +36,11 @@ export const SinglePlaylist = () => {
       setVideos(playlist.videos);
     } else {
       setVideos(videoData);
+      playlistType === 'likedVideos'
+        ? setPlaylistName('Liked Videos')
+        : playlistType === 'watchlaterVideos'
+        ? setPlaylistName('Watch Later')
+        : setPlaylistName('History');
     }
 
     return () => {
