@@ -213,6 +213,7 @@ export const addToHistory = async (videosDispatch, navigate, video, check) => {
   if (jwt) {
     let response;
     if (!check && Object.keys(video).length !== 0) {
+      //
       try {
         response = await axios.post(
           '/api/user/history',
