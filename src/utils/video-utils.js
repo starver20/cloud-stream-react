@@ -209,9 +209,10 @@ export const deletePlaylist = async (videosDispatch, navigate, playlistId) => {
 
 export const addToHistory = async (videosDispatch, navigate, video, check) => {
   const jwt = localStorage.getItem('jwt');
+
   if (jwt) {
     let response;
-    if (!check) {
+    if (!check && Object.keys(video).length !== 0) {
       try {
         response = await axios.post(
           '/api/user/history',
