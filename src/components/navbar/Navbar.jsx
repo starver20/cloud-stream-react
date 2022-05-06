@@ -72,7 +72,7 @@ const Navbar = ({ toggleSidebar }) => {
                         clip-rule="evenodd"
                       ></path>
                     </svg>
-                    <p>{user.firstName}</p>
+                    <p className={classes.username}>{user.firstName}</p>
                   </Link>
                   <div className={classes['profile-options']}>
                     <button

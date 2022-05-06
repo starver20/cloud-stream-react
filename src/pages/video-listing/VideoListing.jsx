@@ -8,7 +8,7 @@ const VideoListing = () => {
   const { videos, categories, categoryFilter, videosDispatch } = useVideos();
 
   let listingVideos = videos.filter((video) =>
-    categoryFilter.length === 0 ? true : categoryFilter.includes(video.category)
+    categoryFilter === '' ? true : categoryFilter === video.category
   );
 
   const resetFilters = () => {
@@ -22,7 +22,7 @@ const VideoListing = () => {
           {categories.map((category) => (
             <FilterChip
               title={category.categoryName}
-              active={categoryFilter.includes(category.categoryName)}
+              active={categoryFilter === category.categoryName}
             />
           ))}
         </div>

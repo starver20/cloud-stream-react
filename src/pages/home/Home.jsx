@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import classes from './Home.module.css';
 import Carousel from '../../components/carousel/Carousel';
 import { CategoryCard } from '../../components/card/category-card/CategoryCard';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useVideos } from '../../context/videos/videos-context';
 
@@ -12,7 +11,7 @@ const Home = () => {
 
   const categoryClickHandler = (e, category) => {
     videosDispatch({
-      type: 'HOME_CATEGORY',
+      type: 'LISTING_CATEGORY',
       payload: { category: category.categoryName },
     });
     navigate('/explore');

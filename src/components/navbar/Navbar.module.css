@@ -17,6 +17,10 @@
   align-items: center;
 }
 
+.username {
+  color: white;
+}
+
 .header-dark > nav > div > svg {
   min-width: 3rem;
   margin-right: 1rem;

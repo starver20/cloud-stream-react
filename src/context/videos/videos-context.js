@@ -8,7 +8,7 @@ const initialState = {
   playlists: [],
   history: [],
   categories: [],
-  categoryFilter: [],
+  categoryFilter: '',
 
   videosDispatch: () => {},
 };
@@ -55,30 +55,12 @@ const videosReducer = (state, action) => {
       return { ...state, categories: action.payload.categories };
     }
 
-    // When clicking category from home, all other category filters should be removed
-    case 'HOME_CATEGORY': {
-      return { ...state, categoryFilter: [action.payload.category] };
-    }
-
-    // When clicking on a category on listing page, old categories should also remain
     case 'LISTING_CATEGORY': {
       const payloadCategory = action.payload.category;
-
-      if (state.categoryFilter.includes(payloadCategory)) {
-        const newCategoryNames = state.categoryFilter.filter(
-          (category) => category !== payloadCategory
-        );
-        return {
-          ...state,
-          categoryFilter: newCategoryNames,
-        };
-      }
-
-      const newCategoryNames = [...state.categoryFilter];
-      newCategoryNames.push(payloadCategory);
       return {
         ...state,
-        categoryFilter: newCategoryNames,
+        categoryFilter:
+          state.categoryFilter === payloadCategory ? '' : payloadCategory,
       };
     }
 
