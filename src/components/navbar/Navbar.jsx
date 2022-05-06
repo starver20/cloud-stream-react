@@ -6,10 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { useVideos } from '../../context/videos/videos-context';
 
 const Navbar = ({ toggleSidebar }) => {
-  const { logout } = useAuth();
   const { videosDispatch } = useVideos();
-
-  const user = JSON.parse(localStorage.getItem('user'));
+  const { user, logout } = useAuth();
 
   const navigate = useNavigate();
 

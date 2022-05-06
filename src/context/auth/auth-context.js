@@ -21,14 +21,16 @@ const useProvideAuth = () => {
   const navigate = useNavigate();
   const { videosDispatch } = useVideos();
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-  const login = async (body) => {
+  const login = async (body, rememberMe) => {
     let response = await axios.post('/api/auth/login', body);
-    console.log(response);
+
     if (response.status === 200) {
-      localStorage.setItem('jwt', response.data.encodedToken);
-      localStorage.setItem('user', JSON.stringify(response.data.foundUser));
+      if (rememberMe) {
+        localStorage.setItem('jwt', response.data.encodedToken);
+        localStorage.setItem('user', JSON.stringify(response.data.foundUser));
+      }
       setUser(response.data.foundUser);
     }
     return { status: response.status, user: response.data.foundUser };
