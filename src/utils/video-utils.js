@@ -248,7 +248,7 @@ export const addToHistory = async (videosDispatch, navigate, video, check) => {
       }
     }
   } else {
-    navigate('/login');
+    // navigate('/login');
     return;
   }
 };
