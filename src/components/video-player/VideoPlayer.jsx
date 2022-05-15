@@ -6,7 +6,7 @@ import { addToHistory } from '../../utils/video-utils';
 import { useManipulators } from '../../utils/useManipulators';
 
 const VideoPlayer = ({ video }) => {
-  const { videosDispatch } = useVideos();
+  const { videosDispatch, videos } = useVideos();
   const { isPresentInHistory } = useManipulators();
 
   const isInHistory = isPresentInHistory(video._id);

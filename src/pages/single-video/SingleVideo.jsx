@@ -3,7 +3,6 @@ import { VideoPlayer } from '../../components/video-player/VideoPlayer';
 import { RightSidebar } from '../../components/sidebar/right-sidebar/RightSidebar';
 import classes from './SingleVideo.module.css';
 import { useParams } from 'react-router-dom';
-import { useVideos } from '../../context/videos/videos-context';
 import axios from 'axios';
 
 const SingleVideo = () => {

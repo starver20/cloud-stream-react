@@ -8,7 +8,7 @@ import { v4 as uuid } from 'uuid';
 export const videos = [
   // tutorial
   {
-    _id: uuid(),
+    _id: 1,
     title: '5 Effective Basketball Weak Hand Dribbling Drills',
     youtubeId: 'Q9GhaXd18hE',
     length: '5:20',
@@ -25,7 +25,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 2,
     title: '5 Effective Basketball Weak Hand Dribbling Drills',
     youtubeId: '2pl7np7xIyI',
     length: '5:20',
@@ -42,7 +42,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 3,
     title: '5 Effective Basketball Weak Hand Dribbling Drills',
     youtubeId: '2qpWxS0pHHU',
     length: '5:20',
@@ -59,7 +59,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 4,
     title: '5 Effective Basketball Weak Hand Dribbling Drills',
     youtubeId: 'bBwvqpbkLkk',
     length: '5:20',
@@ -78,7 +78,7 @@ export const videos = [
 
   // all-star
   {
-    _id: uuid(),
+    _id: 5,
     title: 'Team Durant vs Team Lebron',
     youtubeId: '2Q-qkpuqY-4',
     length: '5:20',
@@ -95,7 +95,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 6,
     title: 'Stephen Curry NBA RECORD 16 THREES',
     youtubeId: 'oJiNAR21gxA',
     length: '5:20',
@@ -112,7 +112,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 7,
     title: 'The best of 1st Time All Stars',
     youtubeId: 'Oz4b9_lPh7s',
     length: '5:20',
@@ -129,7 +129,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 8,
     title: 'The Full 2022 NBA #MtnDew3PT Contest 🎯',
     youtubeId: 'dVk7VMF4-eQ',
     length: '5:20',
@@ -146,7 +146,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 9,
     title: 'WILD ALL-STAR ENDING',
     youtubeId: 'ueC9Tem-Qag',
     length: '5:20',
@@ -165,7 +165,7 @@ export const videos = [
 
   // Dunks
   {
-    _id: uuid(),
+    _id: 10,
     title: 'Top 10 Dunks of The Decade',
     youtubeId: 'ue1NT3QhuVU',
     length: '5:20',
@@ -182,7 +182,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 11,
     title: 'NBA LOUDEST Dunks of 2022 Season! MOMENTS',
     youtubeId: 'wmj_S_py6oI',
     length: '5:20',
@@ -199,7 +199,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 12,
     title: 'Jordan Kilganon - The Dunk King 2',
     youtubeId: '1dTEXh4lxfA',
     length: '5:20',
@@ -216,7 +216,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 13,
     title: 'NBA "Dunk Contest" MOMENTS',
     youtubeId: '9GkCByezmXs',
     length: '5:20',
@@ -233,7 +233,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 14,
     title: 'NBA "Dunk Contest" MOMENTS',
     youtubeId: 'jVOeSsQGkrU',
     length: '5:20',
@@ -252,7 +252,7 @@ export const videos = [
 
   // Blocks
   {
-    _id: uuid(),
+    _id: 15,
     title: 'NBA "Satisfying Blocks" MOMENTS',
     youtubeId: 'HCkYEzt3irg',
     length: '5:20',
@@ -269,7 +269,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 16,
     title: 'NBA Top 60 Blocks Of The Decade',
     youtubeId: 'bldN-4ZE530',
     length: '5:20',
@@ -286,7 +286,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: uuid(),
+    _id: 17,
     title: 'Top Blocks By Each Position!',
     youtubeId: 'VbARnFqi4-8',
     length: '5:20',

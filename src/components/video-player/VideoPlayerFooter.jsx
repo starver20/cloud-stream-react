@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './VideoPlayerFooter.module.css';
 import { formatDistance } from 'date-fns';
 import LikedVideoIcon from '../../assets/svg-icons/LikedVideoIcon';
@@ -13,6 +13,7 @@ import PlaylistModal from '../card/playlist-modal/PlaylistModal';
 
 const VideoPlayerFooter = ({ video }) => {
   const {
+    id,
     title,
     views,
     likes,
@@ -23,11 +24,20 @@ const VideoPlayerFooter = ({ video }) => {
   } = video;
 
   const [showModal, setShowModal] = useState(false);
-  const { videosDispatch } = useVideos();
+  const { videosDispatch, videos } = useVideos();
   const { isLiked, isAddedToWatchlater } = useManipulators();
 
-  const liked = isLiked(video._id);
+  const [liked, setLiked] = useState(isLiked(video._id));
+
+  const currentVideoLikes =
+    videos?.filter((video) => video.id == id)[0]?.likes || likes;
+
+  // const liked = isLiked(video._id);
   const addedToWatchlater = isAddedToWatchlater(video._id);
+
+  useEffect(() => {
+    setLiked(isLiked(video._id));
+  }, [videos]);
 
   const { callAsyncFunction: likeVideo, loading: likeVideoLoading } = useAsync(
     addToLikedVideo,
@@ -55,7 +65,7 @@ const VideoPlayerFooter = ({ video }) => {
           <div className={classes.actions}>
             <p onClick={likeVideoLoading ? null : likeVideo}>
               <LikedVideoIcon active={liked} />
-              {likes}
+              {currentVideoLikes}
             </p>
             <p>
               <ShareIcon active={false} />
@@ -73,7 +83,11 @@ const VideoPlayerFooter = ({ video }) => {
         </div>
       </div>
       <div className={classes['channel-info']}>
-        <img class="avatar avatar-lg" src={channelImage} alt="medium logo" />
+        <img
+          className="avatar avatar-lg"
+          src={channelImage}
+          alt="medium logo"
+        />
         <div>
           <p className={classes['channel-name']}>{channelName}</p>
           <p className={classes['channel-desc']}>{description}</p>

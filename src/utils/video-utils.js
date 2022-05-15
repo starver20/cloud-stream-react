@@ -22,6 +22,10 @@ export const addToLikedVideo = async (
             type: 'UPDATE_LIKED_VIDEOS',
             payload: { likedVideos: response.data.likes },
           });
+          videosDispatch({
+            type: 'INC_LIKE_COUNT',
+            payload: { videoId: video.id },
+          });
         }
       } catch (err) {
         console.log(err);
@@ -32,11 +36,14 @@ export const addToLikedVideo = async (
         response = await axios.delete(`/api/user/likes/${video._id}`, {
           headers: { authorization: jwt },
         });
-
         if (response.status === 200) {
           videosDispatch({
             type: 'UPDATE_LIKED_VIDEOS',
             payload: { likedVideos: response.data.likes },
+          });
+          videosDispatch({
+            type: 'DEC_LIKE_COUNT',
+            payload: { videoId: video.id },
           });
         }
       } catch (err) {
@@ -49,6 +56,60 @@ export const addToLikedVideo = async (
     return;
   }
 };
+
+// export const removeFromLikedVideos = async (
+//   videosDispatch,
+//   navigate,
+//   video,
+//   jwt,
+//   check
+// ) => {
+//   if (jwt) {
+//     let response;
+//     if (!check) {
+//       try {
+//         response = await axios.delete(
+//           `/user/likes/${video.id}}`,
+//           { video },
+//           { headers: { authorization: jwt } }
+//         );
+
+//         if (response.status === 200) {
+//           videosDispatch({
+//             type: 'UPDATE_LIKED_VIDEOS',
+//             payload: { likedVideos: response.data.likes },
+//           });
+//           videosDispatch({
+//             type: 'DEC_LIKE_COUNT',
+//             payload: { videoId: video.id },
+//           });
+//         }
+//       } catch (err) {
+//         console.log(err);
+//         alert(err);
+//       }
+//     } else {
+//       try {
+//         response = await axios.delete(`/api/user/likes/${video._id}`, {
+//           headers: { authorization: jwt },
+//         });
+
+//         if (response.status === 200) {
+//           videosDispatch({
+//             type: 'UPDATE_LIKED_VIDEOS',
+//             payload: { likedVideos: response.data.likes },
+//           });
+//         }
+//       } catch (err) {
+//         console.log(err);
+//         alert(err);
+//       }
+//     }
+//   } else {
+//     navigate('/login');
+//     return;
+//   }
+// };
 
 export const addToWatchlater = async (
   videosDispatch,

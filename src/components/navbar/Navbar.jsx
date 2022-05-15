@@ -55,7 +55,7 @@ const Navbar = ({ toggleSidebar }) => {
           </div>
           <div className="nav-action-container">
             <div className="nav-action">
-              {user ? (
+              {user?.jwt ? (
                 <div className={`nav-icon ${classes['options-container']}`}>
                   <Link to="/">
                     <svg

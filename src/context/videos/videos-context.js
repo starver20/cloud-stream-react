@@ -68,6 +68,33 @@ const videosReducer = (state, action) => {
       return { ...state, categoryFilter: [] };
     }
 
+    case 'INC_LIKE_COUNT': {
+      const videoToEdit = {
+        ...state.videos.find((video) => video.id == action.payload.videoId),
+      };
+      videoToEdit.likes += 1;
+
+      const newVideoArray = state.videos.filter(
+        (video) => video.id != videoToEdit.id
+      );
+      let updatedVideos = [...newVideoArray, { ...videoToEdit }];
+
+      return { ...state, videos: updatedVideos };
+    }
+    case 'DEC_LIKE_COUNT': {
+      const videoToEdit = {
+        ...state.videos.find((video) => video.id == action.payload.videoId),
+      };
+      videoToEdit.likes -= 1;
+
+      const newVideoArray = state.videos.filter(
+        (video) => video.id != videoToEdit.id
+      );
+      let updatedVideos = [...newVideoArray, { ...videoToEdit }];
+
+      return { ...state, videos: updatedVideos };
+    }
+
     case 'RESET_DATA': {
       return initialState;
     }
