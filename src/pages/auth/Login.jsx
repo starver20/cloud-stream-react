@@ -13,7 +13,6 @@ const Login = () => {
   const location = useLocation();
 
   let navigateTo = location.state?.from?.pathname || '/';
-  console.log(navigateTo);
 
   const loginClickHandler = async (e) => {
     e.preventDefault();
@@ -28,7 +27,6 @@ const Login = () => {
 
       if (status === 200) {
         //  Initialize playlist, history and liked videos here
-        console.log(user);
         videosDispatch({
           type: 'UPDATE_LIKED_VIDEOS',
           payload: { likedVideos: user.likes },
@@ -64,7 +62,6 @@ const Login = () => {
         rememberMe
       );
 
-      console.log(user);
       if (status === 200) {
         //  Initialize playlist, history and liked videos here
         videosDispatch({

@@ -9,6 +9,8 @@ import { useManipulators } from '../../utils/useManipulators';
 import { addToLikedVideo, addToWatchlater } from '../../utils/video-utils';
 import { useVideos } from '../../context/videos/videos-context';
 import { useAsync } from '../../hooks/useAsync';
+import { toast } from 'react-toastify';
+// import {toast}
 import PlaylistModal from '../card/playlist-modal/PlaylistModal';
 
 const VideoPlayerFooter = ({ video }) => {
@@ -24,20 +26,26 @@ const VideoPlayerFooter = ({ video }) => {
   } = video;
 
   const [showModal, setShowModal] = useState(false);
-  const { videosDispatch, videos } = useVideos();
+  const { videosDispatch, videos, watchlaterVideos } = useVideos();
   const { isLiked, isAddedToWatchlater } = useManipulators();
 
   const [liked, setLiked] = useState(isLiked(video._id));
+  const [addedToWatchlater, setAddedToWatchlater] = useState(
+    isAddedToWatchlater(video._id)
+  );
 
   const currentVideoLikes =
     videos?.filter((video) => video.id == id)[0]?.likes || likes;
 
-  // const liked = isLiked(video._id);
-  const addedToWatchlater = isAddedToWatchlater(video._id);
-
   useEffect(() => {
     setLiked(isLiked(video._id));
-  }, [videos]);
+    setAddedToWatchlater(isAddedToWatchlater(video._id));
+  }, [videos, watchlaterVideos]);
+
+  const onShareClick = () => {
+    navigator.clipboard.writeText(window.location.href);
+    toast.success('Link copied to clipboard');
+  };
 
   const { callAsyncFunction: likeVideo, loading: likeVideoLoading } = useAsync(
     addToLikedVideo,
@@ -67,7 +75,7 @@ const VideoPlayerFooter = ({ video }) => {
               <LikedVideoIcon active={liked} />
               {currentVideoLikes}
             </p>
-            <p>
+            <p onClick={onShareClick}>
               <ShareIcon active={false} />
               SHARE
             </p>

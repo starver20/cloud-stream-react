@@ -27,7 +27,6 @@ const videosReducer = (state, action) => {
       return { ...state, watchlaterVideos: action.payload.watchlaterVideos };
 
     case 'UPDATE_PLAYLISTS':
-      console.log(action.payload.playlists);
       return { ...state, playlists: action.payload.playlists };
 
     case 'UPDATE_SINGLE_PLAYLIST': {
@@ -64,10 +63,6 @@ const videosReducer = (state, action) => {
       };
     }
 
-    case 'RESET_FILTERS': {
-      return { ...state, categoryFilter: [] };
-    }
-
     case 'INC_LIKE_COUNT': {
       const videoToEdit = {
         ...state.videos.find((video) => video.id == action.payload.videoId),
@@ -81,6 +76,7 @@ const videosReducer = (state, action) => {
 
       return { ...state, videos: updatedVideos };
     }
+
     case 'DEC_LIKE_COUNT': {
       const videoToEdit = {
         ...state.videos.find((video) => video.id == action.payload.videoId),

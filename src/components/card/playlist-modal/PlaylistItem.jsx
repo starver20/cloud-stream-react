@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './PlaylistItem.module.css';
 import { useAsync } from '../../../hooks/useAsync';
 import { useVideos } from '../../../context/videos/videos-context';
 import { addToPlaylist } from '../../../utils/video-utils';
 const PlaylistItem = ({ playlist, video = null }) => {
-  const [check, setCheck] = useState(
-    playlist.videos.find((playlistVideo) => playlistVideo._id === video._id) ===
-      undefined
-      ? false
-      : true
-  );
+  const [check, setCheck] = useState(false);
+
+  useEffect(() => {
+    setCheck(
+      playlist.videos.some((playlistVideo) => playlistVideo._id == video._id)
+    );
+  });
 
   const { videosDispatch } = useVideos();
 
@@ -20,6 +21,7 @@ const PlaylistItem = ({ playlist, video = null }) => {
     addToPlaylist,
     videosDispatch,
     {
+      playlistName: playlist.title,
       playlistId: playlist._id,
       video,
     },

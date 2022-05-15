@@ -11,10 +11,6 @@ const VideoListing = () => {
     categoryFilter === '' ? true : categoryFilter === video.category
   );
 
-  const resetFilters = () => {
-    videosDispatch({ type: 'RESET_FILTERS' });
-  };
-
   return (
     <div className={classes.container}>
       <div className={classes['filter-bar']}>
@@ -27,9 +23,6 @@ const VideoListing = () => {
             />
           ))}
         </div>
-        <button onClick={resetFilters} className="nav--action__login">
-          CLEAR
-        </button>
       </div>
       <div className={classes['video-display']}>
         {listingVideos.map((video) => (
