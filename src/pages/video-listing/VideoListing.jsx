@@ -21,6 +21,7 @@ const VideoListing = () => {
         <div className={classes.filters}>
           {categories.map((category) => (
             <FilterChip
+              key={category.categoryName}
               title={category.categoryName}
               active={categoryFilter === category.categoryName}
             />

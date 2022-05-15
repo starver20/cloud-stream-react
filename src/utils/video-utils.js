@@ -4,9 +4,9 @@ export const addToLikedVideo = async (
   videosDispatch,
   navigate,
   video,
+  jwt,
   check
 ) => {
-  const jwt = localStorage.getItem('jwt');
   if (jwt) {
     let response;
     if (!check) {
@@ -54,9 +54,9 @@ export const addToWatchlater = async (
   videosDispatch,
   navigate,
   video,
+  jwt,
   check
 ) => {
-  const jwt = localStorage.getItem('jwt');
   if (jwt) {
     let response;
     if (!check) {
@@ -100,8 +100,12 @@ export const addToWatchlater = async (
   }
 };
 
-export const createPlaylist = async (videosDispatch, navigate, playlist) => {
-  const jwt = localStorage.getItem('jwt');
+export const createPlaylist = async (
+  videosDispatch,
+  navigate,
+  playlist,
+  jwt
+) => {
   if (jwt) {
     let response;
     try {
@@ -122,6 +126,7 @@ export const createPlaylist = async (videosDispatch, navigate, playlist) => {
       alert(err);
     }
   } else {
+    console.log('here Iam');
     navigate('/login');
     return;
   }
@@ -131,9 +136,9 @@ export const addToPlaylist = async (
   videosDispatch,
   navigate,
   payload,
+  jwt,
   check
 ) => {
-  const jwt = localStorage.getItem('jwt');
   if (jwt) {
     let response;
     if (!check) {
@@ -182,8 +187,12 @@ export const addToPlaylist = async (
   }
 };
 
-export const deletePlaylist = async (videosDispatch, navigate, playlistId) => {
-  const jwt = localStorage.getItem('jwt');
+export const deletePlaylist = async (
+  videosDispatch,
+  navigate,
+  playlistId,
+  jwt
+) => {
   if (jwt) {
     let response;
     try {
@@ -207,9 +216,13 @@ export const deletePlaylist = async (videosDispatch, navigate, playlistId) => {
   }
 };
 
-export const addToHistory = async (videosDispatch, navigate, video, check) => {
-  const jwt = localStorage.getItem('jwt');
-
+export const addToHistory = async (
+  videosDispatch,
+  navigate,
+  video,
+  jwt,
+  check
+) => {
   if (jwt) {
     let response;
     if (!check && Object.keys(video).length !== 0) {
@@ -253,8 +266,7 @@ export const addToHistory = async (videosDispatch, navigate, video, check) => {
   }
 };
 
-export const clearHistory = async (videosDispatch, navigate) => {
-  const jwt = localStorage.getItem('jwt');
+export const clearHistory = async (videosDispatch, navigate, _, jwt) => {
   if (jwt) {
     let response;
     try {

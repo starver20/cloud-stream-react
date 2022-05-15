@@ -1,9 +1,8 @@
 .video-display {
   padding: 2rem;
   display: grid;
-  gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 25rem));
-  place-content: center;
+  gap: 4rem;
 }
 
 .container {

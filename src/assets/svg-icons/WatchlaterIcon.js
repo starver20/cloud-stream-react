@@ -3,7 +3,7 @@ import React from 'react';
 const WatchlaterIcon = ({ active }) => {
   return (
     <svg
-      class="w-6 h-6"
+      className="w-6 h-6"
       fill={active ? 'white' : 'none'}
       stroke={active ? 'black' : 'currentColor'}
       strokeWidth={active ? '0.5' : '1'}

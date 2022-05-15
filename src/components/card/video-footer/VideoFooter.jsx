@@ -6,6 +6,7 @@ import { useManipulators } from '../../../utils/useManipulators';
 import { addToWatchlater, createPlaylist } from '../../../utils/video-utils';
 import { useVideos } from '../../../context/videos/videos-context';
 import { useAsync } from '../../../hooks/useAsync';
+import { useAuth } from '../../../context/auth/auth-context';
 import { Modal } from '../../modal/Modal';
 import PlaylistModal from '../playlist-modal/PlaylistModal';
 
@@ -18,7 +19,8 @@ const VideoFooter = ({ video }) => {
     channelImage,
   } = video;
 
-  const jwt = localStorage.getItem('jwt');
+  const { user } = useAuth();
+
   const navigate = useNavigate();
 
   const { videosDispatch, playlists } = useVideos();
@@ -37,7 +39,7 @@ const VideoFooter = ({ video }) => {
 
   return (
     <div className={classes.footer}>
-      <img class="avatar avatar-sm" src={channelImage} alt="medium logo" />
+      <img className="avatar avatar-sm" src={channelImage} alt="medium logo" />
       <div className={classes['video-info']}>
         <p className={classes.title}>{title}</p>
         <p className={classes.creator}>{channelName}</p>
@@ -73,7 +75,7 @@ const VideoFooter = ({ video }) => {
             <li
               onClick={(e) => {
                 e.stopPropagation();
-                if (!jwt) {
+                if (!user?.jwt) {
                   navigate('/login');
                 }
 
