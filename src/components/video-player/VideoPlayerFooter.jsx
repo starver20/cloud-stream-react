@@ -40,7 +40,7 @@ const VideoPlayerFooter = ({ video }) => {
   useEffect(() => {
     setLiked(isLiked(video._id));
     setAddedToWatchlater(isAddedToWatchlater(video._id));
-  }, [videos, watchlaterVideos]);
+  }, [videos, watchlaterVideos, video]);
 
   const onShareClick = () => {
     navigator.clipboard.writeText(window.location.href);
