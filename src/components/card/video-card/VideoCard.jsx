@@ -26,6 +26,7 @@ const VideoCard = ({ video }) => {
     <div className={classes['video-card']}>
       <div className={classes['image-container']}>
         <img
+          loading="lazy"
           onClick={async () => {
             navigate(`/video/${youtubeId}`);
           }}

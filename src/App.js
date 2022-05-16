@@ -10,7 +10,10 @@ import { Signup } from './pages/auth/Signup';
 import { Playlists } from './pages/playlist/Playlists';
 import { SinglePlaylist } from './pages/playlist/SinglePlaylist';
 import Mockman from 'mockman-js';
+import { ToastContainer, toast } from 'react-toastify';
 import { useState } from 'react';
+import RequiresAuth from './components/auth/RequiresAuth';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -32,17 +35,46 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/explore" element={<VideoListing />} />
             <Route path="/video/:videoId" element={<SingleVideo />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/playlist" element={<Playlists />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/:playlistType" element={<SinglePlaylist />} />
+
+            <Route
+              path="/playlist"
+              element={
+                <RequiresAuth>
+                  <Playlists />
+                </RequiresAuth>
+              }
+            />
+            <Route
+              path="/:playlistType"
+              element={
+                <RequiresAuth>
+                  <SinglePlaylist />
+                </RequiresAuth>
+              }
+            />
             <Route
               path="/playlist/:playlistType"
-              element={<SinglePlaylist />}
+              element={
+                <RequiresAuth>
+                  <SinglePlaylist />
+                </RequiresAuth>
+              }
             />
+
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/m" element={<Mockman />} />
             <Route path="*" element={<VideoListing />} />
           </Routes>
+          <ToastContainer
+            autoClose={3000}
+            draggablePercent={50}
+            toastClassName="dark-toast"
+            style={{
+              fontSize: '1.5rem',
+            }}
+            position={toast.POSITION.BOTTOM_RIGHT}
+          />
         </main>
       </div>
     </div>

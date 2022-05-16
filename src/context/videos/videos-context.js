@@ -8,7 +8,7 @@ const initialState = {
   playlists: [],
   history: [],
   categories: [],
-  categoryFilter: [],
+  categoryFilter: '',
 
   videosDispatch: () => {},
 };
@@ -27,7 +27,6 @@ const videosReducer = (state, action) => {
       return { ...state, watchlaterVideos: action.payload.watchlaterVideos };
 
     case 'UPDATE_PLAYLISTS':
-      console.log(action.payload.playlists);
       return { ...state, playlists: action.payload.playlists };
 
     case 'UPDATE_SINGLE_PLAYLIST': {
@@ -55,35 +54,41 @@ const videosReducer = (state, action) => {
       return { ...state, categories: action.payload.categories };
     }
 
-    // When clicking category from home, all other category filters should be removed
-    case 'HOME_CATEGORY': {
-      return { ...state, categoryFilter: [action.payload.category] };
-    }
-
-    // When clicking on a category on listing page, old categories should also remain
     case 'LISTING_CATEGORY': {
       const payloadCategory = action.payload.category;
-
-      if (state.categoryFilter.includes(payloadCategory)) {
-        const newCategoryNames = state.categoryFilter.filter(
-          (category) => category !== payloadCategory
-        );
-        return {
-          ...state,
-          categoryFilter: newCategoryNames,
-        };
-      }
-
-      const newCategoryNames = [...state.categoryFilter];
-      newCategoryNames.push(payloadCategory);
       return {
         ...state,
-        categoryFilter: newCategoryNames,
+        categoryFilter:
+          state.categoryFilter === payloadCategory ? '' : payloadCategory,
       };
     }
 
-    case 'RESET_FILTERS': {
-      return { ...state, categoryFilter: [] };
+    case 'INC_LIKE_COUNT': {
+      const videoToEdit = {
+        ...state.videos.find((video) => video.id == action.payload.videoId),
+      };
+      videoToEdit.likes += 1;
+
+      const newVideoArray = state.videos.filter(
+        (video) => video.id != videoToEdit.id
+      );
+      let updatedVideos = [...newVideoArray, { ...videoToEdit }];
+
+      return { ...state, videos: updatedVideos };
+    }
+
+    case 'DEC_LIKE_COUNT': {
+      const videoToEdit = {
+        ...state.videos.find((video) => video.id == action.payload.videoId),
+      };
+      videoToEdit.likes -= 1;
+
+      const newVideoArray = state.videos.filter(
+        (video) => video.id != videoToEdit.id
+      );
+      let updatedVideos = [...newVideoArray, { ...videoToEdit }];
+
+      return { ...state, videos: updatedVideos };
     }
 
     case 'RESET_DATA': {

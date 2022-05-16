@@ -19,6 +19,7 @@ const PlaylistModal = ({ toggleModal, showModal, video = null }) => {
   } = useAsync(createPlaylist, videosDispatch, {
     title: playlistName,
     description: 'Playlist Description',
+    video,
   });
 
   const toggleAddingNewPlaylist = () => {

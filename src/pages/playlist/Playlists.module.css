@@ -7,7 +7,6 @@
   display: grid;
   gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 25rem));
-  place-content: center;
 }
 
 .empty-playlist-array {

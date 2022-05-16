@@ -6,10 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { useVideos } from '../../context/videos/videos-context';
 
 const Navbar = ({ toggleSidebar }) => {
-  const { logout } = useAuth();
   const { videosDispatch } = useVideos();
-
-  const user = JSON.parse(localStorage.getItem('user'));
+  const { user, logout } = useAuth();
 
   const navigate = useNavigate();
 
@@ -37,15 +35,15 @@ const Navbar = ({ toggleSidebar }) => {
           <div className={classes.logo}>
             <svg
               onClick={toggleSidebar}
-              class="w-6 h-6"
+              className="w-6 h-6"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
             </svg>
             <Link to={'/'} className="nav-logo">
@@ -57,22 +55,22 @@ const Navbar = ({ toggleSidebar }) => {
           </div>
           <div className="nav-action-container">
             <div className="nav-action">
-              {user ? (
+              {user?.jwt ? (
                 <div className={`nav-icon ${classes['options-container']}`}>
                   <Link to="/">
                     <svg
-                      class="w-6 h-6"
+                      className="w-6 h-6"
                       fill="white"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
-                    <p>{user.firstName}</p>
+                    <p className={classes.username}>{user?.user?.firstName}</p>
                   </Link>
                   <div className={classes['profile-options']}>
                     <button

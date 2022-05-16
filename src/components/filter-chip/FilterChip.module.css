@@ -19,12 +19,6 @@
   color: black;
 }
 
-svg {
-  width: 1.2rem;
-  cursor: pointer;
-  /* pointer-events: none; */
-}
-
 @media (max-width: 600px) {
   .chip {
     font-size: var(--body-4);

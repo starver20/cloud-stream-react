@@ -8,12 +8,8 @@ const VideoListing = () => {
   const { videos, categories, categoryFilter, videosDispatch } = useVideos();
 
   let listingVideos = videos.filter((video) =>
-    categoryFilter.length === 0 ? true : categoryFilter.includes(video.category)
+    categoryFilter === '' ? true : categoryFilter === video.category
   );
-
-  const resetFilters = () => {
-    videosDispatch({ type: 'RESET_FILTERS' });
-  };
 
   return (
     <div className={classes.container}>
@@ -21,14 +17,12 @@ const VideoListing = () => {
         <div className={classes.filters}>
           {categories.map((category) => (
             <FilterChip
+              key={category.categoryName}
               title={category.categoryName}
-              active={categoryFilter.includes(category.categoryName)}
+              active={categoryFilter === category.categoryName}
             />
           ))}
         </div>
-        <button onClick={resetFilters} className="nav--action__login">
-          CLEAR
-        </button>
       </div>
       <div className={classes['video-display']}>
         {listingVideos.map((video) => (

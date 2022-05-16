@@ -7,7 +7,7 @@ export const useManipulators = () => {
     likedVideos.find((video) => video._id === videoId);
 
   const isAddedToWatchlater = (videoId) =>
-    watchlaterVideos.find((video) => video._id === videoId);
+    watchlaterVideos.find((video) => video._id == videoId);
 
   const isPresentInHistory = (videoId) =>
     history.find((video) => video._id === videoId);

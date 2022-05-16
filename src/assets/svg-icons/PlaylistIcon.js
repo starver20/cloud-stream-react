@@ -3,7 +3,7 @@ import React from 'react';
 const PlaylistIcon = ({ active }) => {
   return (
     <svg
-      class="w-6 h-6"
+      className="w-6 h-6"
       fill={active ? 'white' : 'none'}
       stroke="currentColor"
       viewBox="0 0 20 20"

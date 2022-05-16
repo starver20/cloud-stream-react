@@ -1,6 +1,6 @@
-import { Response } from "miragejs";
-import { requiresAuth } from "../utils/authUtils";
-import { v4 as uuid } from "uuid";
+import { Response } from 'miragejs';
+import { requiresAuth } from '../utils/authUtils';
+import { v4 as uuid } from 'uuid';
 
 /**
  * All the routes related to User Playlists are present here.
@@ -20,7 +20,7 @@ export const getAllPlaylistsHandler = function (schema, request) {
         404,
         {},
         {
-          errors: ["The email you entered is not Registered. Not Found error"],
+          errors: ['The email you entered is not Registered. Not Found error'],
         }
       );
     }
@@ -46,14 +46,14 @@ export const addNewPlaylistHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
     const { playlist } = JSON.parse(request.requestBody);
-    user.playlists.push({ ...playlist, videos: [], _id: uuid() });
+    user.playlists.unshift({ ...playlist, videos: [], _id: uuid() });
     return new Response(201, {}, { playlists: user.playlists });
   }
   return new Response(
     404,
     {},
     {
-      errors: ["The email you entered is not Registered. Not Found error"],
+      errors: ['The email you entered is not Registered. Not Found error'],
     }
   );
 };
@@ -68,7 +68,7 @@ export const removePlaylistHandler = function (schema, request) {
   if (user) {
     const playlistId = request.params.playlistId;
     const filteredPlaylists = user.playlists.filter(
-      (item) => item._id !== playlistId
+      (item) => item._id != playlistId
     );
     this.db.users.update({ playlists: filteredPlaylists });
     return new Response(200, {}, { playlists: filteredPlaylists });
@@ -76,7 +76,7 @@ export const removePlaylistHandler = function (schema, request) {
   return new Response(
     404,
     {},
-    { errors: ["The user you request does not exist. Not Found error."] }
+    { errors: ['The user you request does not exist. Not Found error.'] }
   );
 };
 
@@ -89,13 +89,13 @@ export const getVideosFromPlaylistHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
     const playlistId = request.params.playlistId;
-    const playlist = user.playlists.find((item) => item._id !== playlistId);
+    const playlist = user.playlists.find((item) => item._id != playlistId);
     return new Response(200, {}, { playlist });
   }
   return new Response(
     404,
     {},
-    { errors: ["The user you request does not exist. Not Found error."] }
+    { errors: ['The user you request does not exist. Not Found error.'] }
   );
 };
 
@@ -110,13 +110,13 @@ export const addVideoToPlaylistHandler = function (schema, request) {
   if (user) {
     const playlistId = request.params.playlistId;
     const { video } = JSON.parse(request.requestBody);
-    const playlist = user.playlists.find((item) => item._id === playlistId);
-    if (playlist.videos.some((item) => item.id === video.id)) {
+    const playlist = user.playlists.find((item) => item._id == playlistId);
+    if (playlist.videos.some((item) => item.id == video.id)) {
       return new Response(
         409,
         {},
         {
-          errors: ["The video is already in your playlist"],
+          errors: ['The video is already in your playlist'],
         }
       );
     }
@@ -126,7 +126,7 @@ export const addVideoToPlaylistHandler = function (schema, request) {
   return new Response(
     404,
     {},
-    { errors: ["The user you request does not exist. Not Found error."] }
+    { errors: ['The user you request does not exist. Not Found error.'] }
   );
 };
 
@@ -140,9 +140,9 @@ export const removeVideoFromPlaylistHandler = function (schema, request) {
   if (user) {
     const playlistId = request.params.playlistId;
     const videoId = request.params.videoId;
-    let playlist = user.playlists.find((item) => item._id === playlistId);
+    let playlist = user.playlists.find((item) => item._id == playlistId);
     const filteredVideos = playlist.videos.filter(
-      (item) => item._id !== videoId
+      (item) => item._id != videoId
     );
     playlist.videos = filteredVideos;
     return new Response(200, {}, { playlist });
@@ -150,6 +150,6 @@ export const removeVideoFromPlaylistHandler = function (schema, request) {
   return new Response(
     404,
     {},
-    { errors: ["The user you request does not exist. Not Found error."] }
+    { errors: ['The user you request does not exist. Not Found error.'] }
   );
 };

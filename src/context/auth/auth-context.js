@@ -21,15 +21,27 @@ const useProvideAuth = () => {
   const navigate = useNavigate();
   const { videosDispatch } = useVideos();
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem('user')) || {}
+  );
 
-  const login = async (body) => {
+  const login = async (body, rememberMe) => {
     let response = await axios.post('/api/auth/login', body);
-    console.log(response);
+
     if (response.status === 200) {
-      localStorage.setItem('jwt', response.data.encodedToken);
-      localStorage.setItem('user', JSON.stringify(response.data.foundUser));
-      setUser(response.data.foundUser);
+      if (rememberMe) {
+        localStorage.setItem(
+          'user',
+          JSON.stringify({
+            user: response.data.foundUser,
+            jwt: response.data.encodedToken,
+          })
+        );
+      }
+      setUser({
+        user: response.data.foundUser,
+        jwt: response.data.encodedToken,
+      });
     }
     return { status: response.status, user: response.data.foundUser };
   };
@@ -37,7 +49,6 @@ const useProvideAuth = () => {
   const signup = async (body) => {
     let response = await axios.post('/api/auth/signup', body);
     if (response.status === 201) {
-      localStorage.setItem('jwt', response.data.encodedToken);
       localStorage.setItem('user', JSON.stringify(response.data.foundUser));
       setUser(response.data.createdUser);
     }
@@ -45,7 +56,6 @@ const useProvideAuth = () => {
   };
 
   const logout = () => {
-    localStorage.removeItem('jwt');
     localStorage.removeItem('user');
     setUser(null);
     videosDispatch({ type: 'RESET_DATA' });
